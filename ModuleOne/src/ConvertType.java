@@ -13,6 +13,25 @@ public class ConvertType {
         // This is not ok -> String textToBoolean = "1" or String textToBoolean = "yes"
         boolean anyBoolean = Boolean.parseBoolean(textToBoolean);
         System.out.println("anyBoolean = " + anyBoolean);
+
+        // convert to String now
+        int numberToString = 10;
+        int numberToStringTwo = 100;
+        String numberInStr = Integer.toString(numberToString);
+        String anotherNumberInStr = String.valueOf(numberToStringTwo);
+
+        System.out.printf("Number in string: " + numberInStr);
+        System.out.printf("Number in string: " + anotherNumberInStr);
+        
+        // casting 
+        int numberTwoInt = 120;
+        short numberShort = (short) numberTwoInt; // -> casting 
+        long numberLongTwo = numberTwoInt;
+
+        System.out.println("numberLong = " + numberLongTwo);
+        System.out.println("numberShort = " + numberShort);
+        
+
     }
 
 }
