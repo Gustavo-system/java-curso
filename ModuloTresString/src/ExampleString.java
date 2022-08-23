@@ -40,7 +40,7 @@ public class ExampleString {
         System.out.println("hello.contains(\"lo\") = " + hello.contains("lo")); // only accept a string, not chart -> return true o false
         System.out.println("hello.startsWith(\"lo\") = " + hello.startsWith("lo")); // only accept a string, not chart -> return true o false
         System.out.println("hello.endsWith(\"lo\") = " + hello.endsWith("lo")); // only accept a string, not chart -> return true o false
-        System.out.println("  erasing spaces in the text  ".trim()); 
+        System.out.println("  erasing spaces in the text  ".trim());
         // performance of string
         long startTime = System.currentTimeMillis();
 
