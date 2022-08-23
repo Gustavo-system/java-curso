@@ -48,6 +48,25 @@ public class EjemploString {
 
         System.out.println("performance is: " + (startTime - finalTime));
 
+        /*
+         * Validate string
+         *
+         * if variable is null generate a null-exception always
+         * String variableNull = null;
+         */
+
+        int longText = hello.length();
+        System.out.println("longText = " + longText);
+
+        boolean isEmptyText = hello.isEmpty();
+        System.out.println("isEmptyText = " + isEmptyText);
+        /*
+         * This method exist after jdk eleven
+         *
+         * boolean isBlankText = hello.isBlank();
+         */
+
+
 
     }
 }
