@@ -1,11 +1,13 @@
-public class EjemploString {
+public class ExampleString {
     public static void main(String[] args) {
 
         String textOne = "My first string";
         String textTwo = new String("my first string");
 
         boolean isEquals = textOne == textTwo;
+        int textCompare = textOne.compareTo(textTwo);
         System.out.println("isEquals textOne and textTow ? = " + isEquals); // -> return false
+        System.out.println("textCompare = " + textCompare); // -> return 0 or 1 if str is equals
 
         boolean isEqualsText = textOne.equals(textTwo);
         boolean isEqualsTextIgnoreCase = textOne.equalsIgnoreCase(textTwo);
@@ -31,8 +33,14 @@ public class EjemploString {
 
         // another methods for String
         hello.replace("H", "h");
-
-
+        System.out.println("hello.charAt(0) = " + hello.charAt(0)); // -> return the character in the index position = H
+        System.out.println("hello.substring(1,4) = " + hello.substring(1,4)); // -> return = ell, because the final index not inclusive
+        System.out.println("hello.indexOf('l') = " + hello.indexOf('o')); // return always the first position
+        System.out.println("hello.lastIndexOf('o') = " + hello.lastIndexOf('o')); // return the last match // if not exist return -1 
+        System.out.println("hello.contains(\"lo\") = " + hello.contains("lo")); // only accept a string, not chart -> return true o false
+        System.out.println("hello.startsWith(\"lo\") = " + hello.startsWith("lo")); // only accept a string, not chart -> return true o false
+        System.out.println("hello.endsWith(\"lo\") = " + hello.endsWith("lo")); // only accept a string, not chart -> return true o false
+        System.out.println("  erasing spaces in the text  ".trim()); 
         // performance of string
         long startTime = System.currentTimeMillis();
 
