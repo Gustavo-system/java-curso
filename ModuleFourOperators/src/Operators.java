@@ -39,7 +39,5 @@ public class Operators {
         number2 += numeroUno;
         System.out.println("suma asignacion : " + number2);
 
-
-
     }
 }
