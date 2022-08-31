@@ -2,16 +2,7 @@ public class FlujosDeControl {
 
     public static void main(String[] args) {
         /*
-         *
          * floor if else
-         *
-         * sintaxis:
-            if(condicion){
-                bloque de codigo;
-            }
-            else{
-                bloque de codigo
-            }
          */
 
         float promedio = 7.9f; // es una variable con un scope global
@@ -28,5 +19,17 @@ public class FlujosDeControl {
         }
 
         // flujo de control switch
+        // se aplica a cualquier tipo de dato except long
+        int caso = 3;
+        switch (caso){
+            case 1:
+                System.out.println("entra al caso uno");
+                break; // cuando encuentra un caso se sale con el break
+            case 2:
+                System.out.println("entra al caso dos");
+                break;
+            default:
+                System.out.println("no entro a ningun caso");
+        }
     }
 }
