@@ -1,4 +1,5 @@
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class DatesTimes {
@@ -16,7 +17,11 @@ public class DatesTimes {
 
         System.out.println("fechaFormato = " + fechaFormato);
 
-        System.out.println("imprime los milisegundos" + fecha.getTime());
+        System.out.println("imprime los milisegundos = " + fecha.getTime());
+
+
+        // uso de la clase Calendar de java.util.Calendar
+        Calendar calendario = Calendar.getInstance();
 
     }
 }
