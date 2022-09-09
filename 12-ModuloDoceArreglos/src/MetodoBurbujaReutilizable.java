@@ -8,7 +8,7 @@ public class MetodoBurbujaReutilizable {
 
         for (int i = 0; i < sizeArray; i++) {
             for (int j = 0; j < (sizeArray - 1); j++) {
-                if (((Comparable) arrayOrdenar[j + 1]).compareTo(arrayOrdenar[j]) < 0) {
+                if (((Comparable) arrayOrdenar[j + 1]).compareTo(arrayOrdenar[j]) < 0) { // queremos cambiar el orden solo modificar el < a >
                     Object aux = arrayOrdenar[j];
                     arrayOrdenar[j] = arrayOrdenar[j + 1];
                     arrayOrdenar[j + 1] = aux;
