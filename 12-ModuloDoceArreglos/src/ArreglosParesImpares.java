@@ -42,12 +42,12 @@ public class ArreglosParesImpares {
             }
         }
 
-        System.out.print("pares : ");
+        System.out.print("pares: ");
         for (int par : pares) {
             System.out.print(par + ", ");
         }
 
-        System.out.print("\r\nimpares : ");
+        System.out.print("\r\nimpares: ");
         for (int impar : impares) {
             System.out.print(impar + ", ");
         }
