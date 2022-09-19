@@ -20,6 +20,27 @@ public class Automovil {
     private double cilindros;
     private int litros;
 
+    // constructores
+
+    public Automovil(){}
+
+    public Automovil(String fabricante, String modelo){
+        this.fabricante = fabricante;
+        this.modelo = modelo;
+    }
+
+    public Automovil(String fabricante, String modelo, String marca, String color){
+        this(fabricante, modelo);
+        this.marca = marca;
+        this.color = color;
+    }
+
+    public Automovil(String fabricante, String modelo, String marca, String color, double cilindros, int litros){
+        this(fabricante, modelo, marca, color);
+        this.cilindros = cilindros;
+        this.litros = litros;
+    }
+
     // crear metodos para acceder a los datos -> Getters and Setters
     public String getFabricante(){
         return this.fabricante;

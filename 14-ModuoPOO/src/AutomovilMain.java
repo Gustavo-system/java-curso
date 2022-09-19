@@ -4,7 +4,9 @@ public class AutomovilMain {
     public static void main(String[] args) {
 
         // se crean instancias de los objetos
-        Automovil automovilJetta = new Automovil();
+
+        //Automovil automovilJetta = new Automovil();
+        Automovil automovilJetta = new Automovil("VW", "Jetta", "VW", "Rojo", 1.6, 20);
 
         /*
             Asi se acceden a los atributos si no estan ocultos
