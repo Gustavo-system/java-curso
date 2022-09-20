@@ -36,5 +36,8 @@ public class AutomovilMain {
         System.out.println("-> " + automovilJetta.calcularConsumo(100, 40));
         System.out.println("-> " + automovilJetta.calcularConsumo(100, 0.50f));
 
+        Automovil.valoracion = 4.5;
+        System.out.println("-> El " + automovilJetta.getModelo()  + " " + Automovil.valoracion());
+
     }
 }

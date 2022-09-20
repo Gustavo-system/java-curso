@@ -19,6 +19,10 @@ public class Automovil {
     private String color;
     private double cilindros;
     private int litros;
+    static double valoracion = 5.0;
+
+    // atributos final - constantes
+
 
     // constructores
 
@@ -133,6 +137,15 @@ public class Automovil {
 
     public double calcularConsumo(int kilometros, float cantidadGastada){
         return kilometros / (this.litros * cantidadGastada);
+    }
+
+    // metodos estaticos
+    // se acceden sin necesidad de intanciar un objeto, solo colocantod el nombre de la clase . metodo
+    // el metodo estatico no puede ser privado
+    // los estativos solo pueden usar estaticos, no se puede usar this o acceder de forma normal a un no estatico aunque este en la misma clase
+    // si de alguna forma se cambia el valor del metodo estativo o valor estatico se cambia en todos los objetos
+    static String valoracion(){
+        return "tiene una valoracion de " + valoracion + " estrellas en seguridad ";
     }
 
 }
