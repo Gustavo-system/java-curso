@@ -6,7 +6,7 @@ public class AutomovilMain {
         // se crean instancias de los objetos
 
         //Automovil automovilJetta = new Automovil();
-        Automovil automovilJetta = new Automovil("VW", "Jetta", "VW", "Rojo", 1.6, 20);
+        Automovil automovilJetta = new Automovil("VW", "Jetta", "VW", Colores.BLANCO, 1.6, 20);
 
         /*
             Asi se acceden a los atributos si no estan ocultos
@@ -23,7 +23,7 @@ public class AutomovilMain {
 
         automovilJetta.setMarca("VW");
         automovilJetta.setModelo("Jetta");
-        automovilJetta.setColor("Rojo");
+        automovilJetta.setColor(Colores.ROJO);
         automovilJetta.setCilindros(1.6);
         automovilJetta.setLitros(20);
         automovilJetta.setFabricante("VW");

@@ -1,3 +1,5 @@
+import java.awt.*;
+
 public class Automovil {
     // las clases solo pueden ser public o default
     // si es publica se puede usar en donde sea
@@ -16,16 +18,16 @@ public class Automovil {
     private String fabricante;
     private String modelo;
     private String marca;
-    private String color;
+    private Colores color;
     private double cilindros;
     private int litros;
     static double valoracion = 5.0;
 
     // atributos final - constantes
-
+    // siempre se debe inicializar con un valor y por lo regular siempre son staticas
+    private static final int NUMERO_NEUMATICOS = 4;
 
     // constructores
-
     public Automovil(){}
 
     public Automovil(String fabricante, String modelo){
@@ -33,13 +35,13 @@ public class Automovil {
         this.modelo = modelo;
     }
 
-    public Automovil(String fabricante, String modelo, String marca, String color){
+    public Automovil(String fabricante, String modelo, String marca, Colores color){
         this(fabricante, modelo);
         this.marca = marca;
         this.color = color;
     }
 
-    public Automovil(String fabricante, String modelo, String marca, String color, double cilindros, int litros){
+    public Automovil(String fabricante, String modelo, String marca, Colores color, double cilindros, int litros){
         this(fabricante, modelo, marca, color);
         this.cilindros = cilindros;
         this.litros = litros;
@@ -58,7 +60,7 @@ public class Automovil {
         return this.marca;
     }
 
-    public String getColor(){
+    public Colores getColor(){
         return this.color;
     }
 
@@ -82,7 +84,7 @@ public class Automovil {
         this.marca = marca;
     }
 
-    public void setColor(String color) {
+    public void setColor(Colores color) {
         this.color = color;
     }
 
@@ -107,7 +109,7 @@ public class Automovil {
     // con this se hace referencia a los atributos de la misma clase
     public void descripcion(){
         System.out.println("el auto es un " + this.modelo + " marca "
-                            + this.marca + " de color " + this.color + " con "
+                            + this.marca + " de color " + this.color.getColor() + " con "
                             + this.cilindros + " cilindros");
     }
 
@@ -116,8 +118,9 @@ public class Automovil {
     public String descripcionAutomovil(){
         return "el auto es un " + this.modelo +
                 " marca " + this.marca +
-                " de color " + this.color +
-                " con " + this.cilindros + " cilindros";
+                " de color " + this.color.getColor() +
+                " con " + this.cilindros + " cilindros con " +
+                Automovil.NUMERO_NEUMATICOS + " neumaticos";
     }
 
     /*
@@ -145,7 +148,7 @@ public class Automovil {
     // los estativos solo pueden usar estaticos, no se puede usar this o acceder de forma normal a un no estatico aunque este en la misma clase
     // si de alguna forma se cambia el valor del metodo estativo o valor estatico se cambia en todos los objetos
     static String valoracion(){
-        return "tiene una valoracion de " + valoracion + " estrellas en seguridad ";
+        return "tiene una valoracion de " + Automovil.valoracion + " estrellas en seguridad ";
     }
 
 }
