@@ -4,11 +4,11 @@ import com.gustavo.ejercicioPractivo.Panaderia;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class PanaderoThread implements Runnable{
+public class PanaderoThread implements Runnable {
 
     private Panaderia panaderia;
 
-    public PanaderoThread(Panaderia panaderia){
+    public PanaderoThread(Panaderia panaderia) {
         this.panaderia = panaderia;
     }
 
@@ -16,7 +16,7 @@ public class PanaderoThread implements Runnable{
     public void run() {
 
         // logica del hilo
-        for(int i = 0; i < 10; i++){
+        for (int i = 0; i < 10; i++) {
             panaderia.hornear("Pan numero " + i);
             try {
                 Thread.sleep(ThreadLocalRandom.current().nextInt(2000, 5000));
