@@ -1,6 +1,6 @@
-package com.gustavo.ejercicioPractivo.runnable;
+package com.gustavo.ejercicioPractico.runnable;
 
-import com.gustavo.ejercicioPractivo.Panaderia;
+import com.gustavo.ejercicioPractico.Panaderia;
 
 import java.util.concurrent.ThreadLocalRandom;
 

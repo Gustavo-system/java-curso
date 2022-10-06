@@ -1,4 +1,4 @@
-package com.gustavo.ejercicioPractivo;
+package com.gustavo.ejercicioPractico;
 
 // Recurso compartido por los hilos
 public class Panaderia {

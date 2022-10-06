@@ -1,4 +1,4 @@
-package com.gustavo.tareas.timer;
+package com.gustavo.tareasTimer;
 
 import java.awt.*;
 import java.util.Date;

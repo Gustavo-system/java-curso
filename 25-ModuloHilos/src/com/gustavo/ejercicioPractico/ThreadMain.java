@@ -1,7 +1,7 @@
-package com.gustavo.ejercicioPractivo;
+package com.gustavo.ejercicioPractico;
 
-import com.gustavo.ejercicioPractivo.runnable.ClienteThread;
-import com.gustavo.ejercicioPractivo.runnable.PanaderoThread;
+import com.gustavo.ejercicioPractico.runnable.ClienteThread;
+import com.gustavo.ejercicioPractico.runnable.PanaderoThread;
 
 public class ThreadMain {
     public static void main(String[] args) {

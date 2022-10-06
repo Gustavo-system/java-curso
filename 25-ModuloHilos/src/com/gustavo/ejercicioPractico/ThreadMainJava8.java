@@ -1,4 +1,4 @@
-package com.gustavo.ejercicioPractivo;
+package com.gustavo.ejercicioPractico;
 
 import java.util.concurrent.ThreadLocalRandom;
 
