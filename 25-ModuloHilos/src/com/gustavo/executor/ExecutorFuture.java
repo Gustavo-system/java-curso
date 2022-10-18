@@ -2,12 +2,11 @@ package com.gustavo.executor;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
-public class ExecutorMain {
-    public static void main(String[] args) throws InterruptedException {
-
-        // EjecutorService nos retorna un Future y podemos manipular su estado
+public class ExecutorFuture {
+    public static void main(String[] args) {
         ExecutorService executorService = Executors.newSingleThreadExecutor();
 
         Runnable tarea = () -> {
@@ -22,10 +21,11 @@ public class ExecutorMain {
         };
 
         System.out.println("Inicio del metodo main");
-        executorService.submit(tarea); // se lanza la el hilo pero si solo se queda asi no se termina
+        Future<?> resultadoFuturo = executorService.submit(tarea); // retorna un future
         executorService.shutdown(); // espera que todas las tareas terminen
-        //executorService.awaitTermination(5, TimeUnit.SECONDS); //esperar el tiempo indicado y asi continua con el proceso
-        System.out.println("Continua con el metodo main.");
+
+        System.out.println("La tarea termimo -> " + resultadoFuturo.isDone()); // retorna false por que aun no termina la tarea
+
 
     }
 }
