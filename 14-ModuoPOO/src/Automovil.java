@@ -11,7 +11,7 @@ public class Automovil {
      * public
      * private
      * protected
-     *
+     * default
      */
 
     // atributos de la clase
@@ -21,13 +21,18 @@ public class Automovil {
     private Colores color;
     private double cilindros;
     private int litros;
+
+    // tiene un modificador de acceso default es buena practica ponerle uno
     static double valoracion = 5.0;
 
+    // si se tiene una variable estatica y privada se deben crear los metodos de acceso y estos deben ser estaticos
+    private static int numeroPuertas = 4;
+
     // atributos final - constantes
-    // siempre se debe inicializar con un valor y por lo regular siempre son staticas
+    // siempre se debe inicializar con un valor y por lo regular siempre son static
     private static final int NUMERO_NEUMATICOS = 4;
 
-    // constructores
+    // constructores y sobre carga de contructores
     public Automovil(){}
 
     public Automovil(String fabricante, String modelo){
@@ -72,6 +77,10 @@ public class Automovil {
         return this.litros;
     }
 
+    public static int getNumeroPuertas(){
+        return Automovil.numeroPuertas;
+    }
+
     public void setFabricante(String fabricante){
         this.fabricante = fabricante;
     }
@@ -94,6 +103,11 @@ public class Automovil {
 
     public void setLitros(int litros) {
         this.litros = litros;
+    }
+
+    // es un metodo estatico para ponerle un nuevo valor a la variable estatica.
+    public static void setNumeroPuertas(int numeroPuertas){
+        Automovil.numeroPuertas = numeroPuertas;
     }
 
     /*
@@ -149,6 +163,24 @@ public class Automovil {
     // si de alguna forma se cambia el valor del metodo estativo o valor estatico se cambia en todos los objetos
     static String valoracion(){
         return "tiene una valoracion de " + Automovil.valoracion + " estrellas en seguridad ";
+    }
+
+    // se agrega la palabra de @Override, se pude poner o no no afecta solo es para documentar
+    @Override
+    public boolean equals(Object obj){
+        Automovil automovil = (Automovil) obj;
+        // validamos que solo se compare con valores de la clase
+        if(!(obj instanceof Automovil)){
+            return false;
+        }
+        // validamos los datos que vienen en el objeto -> NullPointerException
+        return (this.fabricante.equals(automovil.getFabricante()) && this.modelo.equals(automovil.getModelo()));
+    }
+
+    // sobre escribir el metodo toString()
+    @Override
+    public String toString(){
+        return "Sobre carga de toString del automovil " + this.getModelo();
     }
 
 }

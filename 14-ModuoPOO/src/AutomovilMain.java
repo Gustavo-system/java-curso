@@ -6,11 +6,21 @@ public class AutomovilMain {
         // se crean instancias de los objetos
 
         //Automovil automovilJetta = new Automovil();
+        // se puede crear un objeto con distintos valores en el contructor gracias a la sobre carga de conctructores
         Automovil automovilJetta = new Automovil("VW", "Jetta", "VW", Colores.BLANCO, 1.6, 20);
+        Automovil automovilVersa = new Automovil("Nissan", "Versa", "Nissan", Colores.ROJO, 1.6, 20);
+        Automovil automovilVersa2 = new Automovil("Nissan", "Versa", "Nissan", Colores.AZUL, 1.6, 20);
+
+        // Se comparan los objetos para saber si son distintos
+        System.out.println("Se compara igualdad por espacio de memoria -> " + (automovilVersa == automovilVersa2));
+        System.out.println("Se compara igualdad por valores" + automovilVersa.equals(automovilVersa2)); // se sobre escribe el metodo equals
+
+        // se imprime el objeto con la @Override del toString();
+        System.out.println("forma implicita -> " + automovilJetta); // forma implicita
+        System.out.println("forma explicita -> " + automovilJetta.toString()); // forma explicita
 
         /*
             Asi se acceden a los atributos si no estan ocultos
-
             automovilJetta.marca = "VW";
             automovilJetta.modelo = "jetta";
             automovilJetta.color = "rojo";
@@ -20,7 +30,6 @@ public class AutomovilMain {
          */
 
         // asi de acceden a los datos si estan ocultos
-
         automovilJetta.setMarca("VW");
         automovilJetta.setModelo("Jetta");
         automovilJetta.setColor(Colores.ROJO);
@@ -36,8 +45,13 @@ public class AutomovilMain {
         System.out.println("-> " + automovilJetta.calcularConsumo(100, 40));
         System.out.println("-> " + automovilJetta.calcularConsumo(100, 0.50f));
 
+        // se manda a llamar el artibuto esatico con la clase para que sea mas explicito.
         Automovil.valoracion = 4.5;
         System.out.println("-> El " + automovilJetta.getModelo()  + " " + Automovil.valoracion());
+
+        // si fuera un static privado tendramos que crearle el metodo getter anf setter, el metodo debe ser estatico
+        Automovil.setNumeroPuertas(5);
+        System.out.println("-> El " + automovilVersa.getModelo() + " Tiene un total de " + Automovil.getNumeroPuertas() + " puertas.");
 
     }
 }
