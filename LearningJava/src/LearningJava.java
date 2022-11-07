@@ -6,22 +6,28 @@ import com.wizeline.BO.UserBOImpl;
 import com.wizeline.DTO.BankAccountDTO;
 import com.wizeline.DTO.ResponseDTO;
 import com.wizeline.DTO.UserDTO;
+import com.wizeline.utils.Utils;
 import com.wizeline.utils.exceptions.ExcepcionGenerica;
-import com.wizeline.utils.*;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import javax.crypto.*;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.InetSocketAddress;
 import java.net.URI;
 import java.net.URLDecoder;
+import java.security.*;
 import java.time.Duration;
 import java.time.Instant;
-import java.time.LocalDateTime;
 import java.util.*;
+import java.util.function.Function;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 public class LearningJava extends Thread {
     private static final Logger LOGGER = Logger.getLogger(LearningJava.class.getName());
@@ -238,6 +244,163 @@ public class LearningJava extends Thread {
             exchange.close();
         }));
 
+        // Genericos
+        server.createContext("/api/getAccountsByUser", (exchange -> {
+            LOGGER.info("LearningJava - Inicia procesamiento de peticion - getAccountsByUser ...");
+            Instant inicioDeEjecucion = Instant.now();
+            BankAccountBO bankAccountBO = new BankAccountBOImpl();
+            String responseText = "";
+            /** Validates the type of http request  */
+            if ("GET".equals(exchange.getRequestMethod())) {
+                LOGGER.info("LearningJava - Procesando peticion HTTP de tipo GET");
+                List<BankAccountDTO> accounts = bankAccountBO.getAccounts();
+                List<BankAccountDTO> accountsFiltered = bankAccountBO.getAccounts();
+                accountsFiltered.clear();
+
+                // Aquí implementaremos nuestro código de filtrar las cuentas por usuario usando genericos
+                Map<String, String> params = splitQuery(exchange.getRequestURI());
+                Optional<Object> Optionaluser = getParameterValueObject(params, "user");
+                Object user = Optionaluser.get();
+                for (int i = 0; i < accounts.size(); i++) {
+                    if (accounts.get(i).getUser().indexOf(user.toString()) >= 0) {
+                        accountsFiltered.add(accounts.get(i));
+                    }
+                }
+
+                JSONArray json = new JSONArray(accountsFiltered);
+                responseText = json.toString();
+                exchange.getResponseHeaders().add("Content-type", "application/json");
+                exchange.sendResponseHeaders(200, responseText.getBytes().length);
+            } else {
+                /** 405 Method Not Allowed */
+                exchange.sendResponseHeaders(405, -1);
+            }
+
+            OutputStream output = exchange.getResponseBody();
+            Instant finalDeEjecucion = Instant.now();
+
+            LOGGER.info("LearningJava - Cerrando recursos ...");
+            String total = new String(String.valueOf(Duration.between(inicioDeEjecucion, finalDeEjecucion).toMillis()).concat(" segundos."));
+            LOGGER.info("Tiempo de respuesta: ".concat(total));
+            output.write(responseText.getBytes());
+            output.flush();
+            output.close();
+            exchange.close();
+        }));
+
+        // Programacion funcional
+        server.createContext("/api/getAccountsGroupByType", (exchange -> {
+            LOGGER.info("LearningJava - Inicia procesamiento de peticion - getAccountsByUser ...");
+            Instant inicioDeEjecucion = Instant.now();
+            BankAccountBO bankAccountBO = new BankAccountBOImpl();
+            String responseText = "";
+            if ("GET".equals(exchange.getRequestMethod())) {
+                LOGGER.info("LearningJava - Procesando peticion HTTP de tipo GET");
+                List<BankAccountDTO> accounts = bankAccountBO.getAccounts();
+                // Aqui implementaremos la programación funcional
+                Map<String, List<BankAccountDTO>> groupedAccounts;
+                Function<BankAccountDTO, String> groupFunction = (account) -> account.getAccountType().toString();
+                groupedAccounts = accounts.stream().collect(Collectors.groupingBy(groupFunction));
+
+                JSONArray json = new JSONArray(groupedAccounts);
+                responseText = json.toString();
+                exchange.getResponseHeaders().add("Content-type", "application/json");
+                exchange.sendResponseHeaders(200, responseText.getBytes().length);
+            } else {
+                /** 405 Method Not Allowed */
+                exchange.sendResponseHeaders(405, -1);
+            }
+            OutputStream output = exchange.getResponseBody();
+            Instant finalDeEjecucion = Instant.now();
+
+            LOGGER.info("LearningJava - Cerrando recursos ...");
+            String total = new String(String.valueOf(Duration.between(inicioDeEjecucion, finalDeEjecucion).toMillis()).concat(" segundos."));
+            LOGGER.info("Tiempo de respuesta: ".concat(total));
+            output.write(responseText.getBytes());
+            output.flush();
+            output.close();
+            exchange.close();
+        }));
+
+        // Cifrado
+        server.createContext("/api/getEncryptedAccounts", (exchange -> {
+            LOGGER.info("LearningJava - Inicia procesamiento de peticion - getAccountsByUser ...");
+            Instant inicioDeEjecucion = Instant.now();
+            BankAccountBO bankAccountBO = new BankAccountBOImpl();
+            String responseText = "";
+            if ("GET".equals(exchange.getRequestMethod())) {
+                LOGGER.info("LearningJava - Procesando peticion HTTP de tipo GET");
+                List<BankAccountDTO> accounts = bankAccountBO.getAccounts();
+
+                // Aquí implementaremos nuestro código de cifrar nuestras cuentas y regresarselas al usuario de manera cifrada
+                byte[] keyBytes = new byte[]{
+                        0x01, 0x23, 0x45, 0x67, (byte) 0x89, (byte) 0xab, (byte) 0xcd, (byte) 0xef
+                };
+                byte[] ivBytes = new byte[]{
+                        0x00, 0x01, 0x02, 0x03, 0x00, 0x00, 0x00, 0x01
+                };
+                Security.addProvider(new BouncyCastleProvider());
+                SecretKeySpec key = new SecretKeySpec(keyBytes, "DES");
+                IvParameterSpec ivSpec = new IvParameterSpec(ivBytes);
+                Cipher cipher = null;
+                try {
+                    cipher = Cipher.getInstance("DES/CTR/NoPadding", "BC");
+                    cipher.init(Cipher.ENCRYPT_MODE, key, ivSpec);
+                    // Cifraremos solamente el nombre y el country (pueden cifrar todos los parámetros que gusten)
+                    for (int i = 0; i < accounts.size(); i++) {
+                        String accountName = accounts.get(i).getAccountName();
+                        byte[] arrAccountName = accountName.getBytes();
+                        byte [] accountNameCipher = new byte[cipher.getOutputSize(arrAccountName.length)];
+                        int ctAccountNameLength = cipher.update(arrAccountName, 0, arrAccountName.length, accountNameCipher, 0);
+                        ctAccountNameLength += cipher.doFinal(accountNameCipher, ctAccountNameLength);
+                        accounts.get(i).setAccountName(accountNameCipher.toString());
+
+                        String accountCountry = accounts.get(i).getCountry();
+                        byte[] arrAccountCountry = accountCountry.getBytes();
+                        byte[] accountCountryCipher = new byte[cipher.getOutputSize(arrAccountCountry.length)];
+                        int ctAccountCountryLength = cipher.update(arrAccountCountry, 0, arrAccountCountry.length, accountCountryCipher, 0);
+                        ctAccountNameLength += cipher.doFinal(accountCountryCipher, ctAccountCountryLength);
+                        accounts.get(i).setCountry(accountCountryCipher.toString());
+
+                    }
+                } catch (NoSuchAlgorithmException e) {
+                    throw new RuntimeException(e);
+                } catch (NoSuchProviderException e) {
+                    throw new RuntimeException(e);
+                } catch (NoSuchPaddingException e) {
+                    throw new RuntimeException(e);
+                } catch (InvalidAlgorithmParameterException e) {
+                    throw new RuntimeException(e);
+                } catch (ShortBufferException e) {
+                    throw new RuntimeException(e);
+                } catch (IllegalBlockSizeException e) {
+                    throw new RuntimeException(e);
+                } catch (BadPaddingException e) {
+                    throw new RuntimeException(e);
+                } catch (InvalidKeyException e) {
+                    throw new RuntimeException(e);
+                }
+
+
+                JSONArray json = new JSONArray(accounts);
+                responseText = json.toString();
+                exchange.getResponseHeaders().add("Content-type", "application/json");
+                exchange.sendResponseHeaders(200, responseText.getBytes().length);
+            } else {
+                exchange.sendResponseHeaders(405, -1);
+            }
+            OutputStream output = exchange.getResponseBody();
+            Instant finalDeEjecucion = Instant.now();
+
+            LOGGER.info("LearningJava - Cerrando recursos ...");
+            String total = new String(String.valueOf(Duration.between(inicioDeEjecucion, finalDeEjecucion).toMillis()).concat(" segundos."));
+            LOGGER.info("Tiempo de respuesta: ".concat(total));
+            output.write(responseText.getBytes());
+            output.flush();
+            output.close();
+            exchange.close();
+        }));
+
         // inicio del servidor de java
         server.setExecutor(null);
         server.start();
@@ -368,6 +531,15 @@ public class LearningJava extends Thread {
 
     // opcionales y genericos -> String to Object::class
     private static Optional<String> getParameterValue(Map<String, String> param, String paramName) {
+        String val = param.get(paramName);
+        if (val != null && val != "") {
+            return Optional.ofNullable(val);
+        }
+        return Optional.ofNullable("NA");
+    }
+
+    // Genericos
+    private static Optional<Object> getParameterValueObject(Map<String, String> param, String paramName) {
         String val = param.get(paramName);
         if (val != null && val != "") {
             return Optional.ofNullable(val);
