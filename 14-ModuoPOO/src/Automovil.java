@@ -21,6 +21,7 @@ public class Automovil {
     private Colores color;
     private double cilindros;
     private int litros;
+    private TiposAutomoviles tipoAutomovil;
 
     // tiene un modificador de acceso default es buena practica ponerle uno
     static double valoracion = 5.0;
@@ -46,10 +47,11 @@ public class Automovil {
         this.color = color;
     }
 
-    public Automovil(String fabricante, String modelo, String marca, Colores color, double cilindros, int litros){
+    public Automovil(String fabricante, String modelo, String marca, Colores color, double cilindros, int litros, TiposAutomoviles tipoAutomovil){
         this(fabricante, modelo, marca, color);
         this.cilindros = cilindros;
         this.litros = litros;
+        this.tipoAutomovil = tipoAutomovil;
     }
 
     // crear metodos para acceder a los datos -> Getters and Setters
@@ -75,6 +77,10 @@ public class Automovil {
 
     public int getLitros(){
         return this.litros;
+    }
+
+    public TiposAutomoviles getTipoAutomovil(){
+        return this.tipoAutomovil;
     }
 
     public static int getNumeroPuertas(){
@@ -103,6 +109,10 @@ public class Automovil {
 
     public void setLitros(int litros) {
         this.litros = litros;
+    }
+
+    public void setTipoAutomovil(TiposAutomoviles tipoAutomovil){
+        this.tipoAutomovil = tipoAutomovil;
     }
 
     // es un metodo estatico para ponerle un nuevo valor a la variable estatica.

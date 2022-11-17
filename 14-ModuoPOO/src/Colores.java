@@ -2,7 +2,6 @@ public enum Colores {
     /*
     * Es una coleccion de valores contantes
     */
-
     ROJO("rojo"),
     AMARILLO("amarillo"),
     BLANCO("blanco"),
@@ -19,4 +18,12 @@ public enum Colores {
     public String getColor() {
         return color;
     }
+
+    /*
+    Para evitar realizar en cada llamado Color.ROJO.getColor(); se genera el toString() para sobre escribirlo.
+    @Override
+    public String toString() {
+        return this.color;
+    }
+    */
 }
