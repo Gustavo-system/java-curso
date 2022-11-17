@@ -12,4 +12,16 @@ public class Calculadora implements CalculadoraInterface{
         return numero1 - numero2;
     }
 
+    @Override
+    public double multiplicacion(double numero1, double numero2) {
+        return numero1 * numero2;
+    }
+
+    @Override
+    public double divicion(double numero1, double numero2) {
+        if(numero2 == 0){
+            throw new ArithmeticException("No se puede dividir entre 0");
+        }
+        return numero1 / numero2;
+    }
 }

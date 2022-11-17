@@ -67,4 +67,23 @@ class CalculadoraTest {
         System.out.println("@Test => calculadoraRestarTest() " + calculadora.restar(20, 10));
         assertEquals(10, calculadora.restar(20, 10));
     }
+
+    @Test
+    public void calculadoraMultiplicarTest(){
+        System.out.println("@Test => calculadoraMultiplicarTest()");
+        assertEquals(10, calculadora.multiplicacion(2, 5));
+    }
+
+    @Test
+    public void calculadoraDivicionTest(){
+        System.out.println("@Test => calculadoraDivicionTest()");
+        assertEquals(50, calculadora.divicion(100, 2), "El resultado no es el esperado");
+    }
+
+    @Test
+    public void calculadoraDivicionPorCeroTest(){
+        System.out.println("@Test => calculadoraDivicionPorCeroTest()");
+        assertThrows(ArithmeticException.class, ()->calculadora.divicion(2.0, 0.0), "No se puede dividir entre 0");
+    }
+
 }
