@@ -24,7 +24,9 @@ public class Main {
         };
         formatoFecha.accept(new Date());
 
-        // Existe el BiConsumer para pasar dos parametros
+        // Existe el BiConsumer para pasar dos parameters
+        // en los parameters que se mandan en la function de flecha se puede indicar el tipo dato y si es mas un parametro
+        // se separa por comas y se debe poner con parenthesis
         BiConsumer<String, Integer> datosPersonales = (String nombre, Integer edad) -> {
             System.out.println("Hola, mi nombres es " + nombre + " tengo " + edad + " años.");
         };
