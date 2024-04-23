@@ -22,7 +22,7 @@ public class LibrosController {
 
     @PostMapping("/libros")
     public ResponseEntity<GeneralResponse> create(@RequestBody LibroDTO request){
-        return new ResponseEntity<>(GeneralResponse.builder().setResultado(libroService.save(request)).build(), HttpStatus.OK);
+        return new ResponseEntity<>(GeneralResponse.builder().setResultado(libroService.save(request)).build(), HttpStatus.CREATED);
     }
 
     @GetMapping("/libros/{id}")

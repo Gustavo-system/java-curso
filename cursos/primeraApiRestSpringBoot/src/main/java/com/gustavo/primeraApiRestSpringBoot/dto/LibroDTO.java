@@ -7,6 +7,7 @@ public class LibroDTO {
     private String nombre;
     private String descripcion;
     private AutorDTO autor;
+    private Integer idAutor;
 
     public LibroDTO() {}
 
@@ -14,7 +15,7 @@ public class LibroDTO {
         this.id = libro.getId();
         this.nombre = libro.getNombre();
         this.descripcion = libro.getDescripcion();
-        this.autor = new AutorDTO(libro.getAutor());
+        //this.autor = new AutorDTO(libro.getAutor());
     }
 
     public Integer getId() {
@@ -41,11 +42,19 @@ public class LibroDTO {
         this.descripcion = descripcion;
     }
 
-    public AutorDTO getAutor() {
+    public AutorDTO getAutorDTO() {
         return autor;
     }
 
-    public void setAutor(AutorDTO autor) {
+    public void setAutorDTO(AutorDTO autor) {
         this.autor = autor;
+    }
+
+    public Integer getIdAutor() {
+        return idAutor;
+    }
+
+    public void setIdAutor(Integer idAutor) {
+        this.idAutor = idAutor;
     }
 }

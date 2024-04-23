@@ -20,7 +20,7 @@ public class Libro {
         this.id = libroDTO.getId();
         this.nombre = libroDTO.getNombre();
         this.descripcion = libroDTO.getDescripcion();
-        this.autor = new Autor(libroDTO.getAutor());
+        this.autor = new Autor(libroDTO.getAutorDTO());
     }
 
     public Integer getId() {
