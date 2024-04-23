@@ -20,7 +20,7 @@ public class LibroService {
         return fabricaLibroService.crearLibroDTO(libroRepository.save(fabricaLibroService.crearLibro(libroDTO)));
     }
 
-    public List<LibroDTO> getAll(){
+    public List<LibroDTO> findAll(){
         return fabricaLibroService.crearLibrosDTO(libroRepository.findAll());
     }
 
