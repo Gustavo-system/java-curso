@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Granja {
 
-    private static final Logger log = LoggerFactory.getLogger(HelloWorldApplication.class);
+    private static final Logger log = LoggerFactory.getLogger(Granja.class);
 
     @Autowired
     @Qualifier("pajarito")

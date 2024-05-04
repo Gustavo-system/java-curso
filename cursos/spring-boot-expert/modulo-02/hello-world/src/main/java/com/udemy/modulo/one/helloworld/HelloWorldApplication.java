@@ -1,6 +1,8 @@
 package com.udemy.modulo.one.helloworld;
 
 import com.udemy.modulo.one.helloworld.inyecciones.Coche;
+import com.udemy.modulo.one.helloworld.lifecycle.ExplicitBeen;
+import com.udemy.modulo.one.helloworld.lifecycle.LifeCycleBeen;
 import com.udemy.modulo.one.helloworld.profiles.EnviromentService;
 import com.udemy.modulo.one.helloworld.qualifiers.Animal;
 import com.udemy.modulo.one.helloworld.qualifiers.Granja;
@@ -17,10 +19,16 @@ public class HelloWorldApplication {
 
 	private static final Logger log = LoggerFactory.getLogger(HelloWorldApplication.class);
 
-	// de claracion de beeans explicitos
+	// declaration beans explicit
 	@Bean
 	public String getNombreAplicacion(){
 		return "curso de spring boot udemy";
+	}
+
+	// declaration de un been explicito custom haciendo referencia por medio de los parameters de la annotation Been
+	@Bean(initMethod = "init", destroyMethod = "destroy")
+	public ExplicitBeen getExplicitBeen(){
+		return new ExplicitBeen();
 	}
 
 	//public static void main(String[] args) {SpringApplication.run(HelloWorldApplication.class, args);}
@@ -61,6 +69,10 @@ public class HelloWorldApplication {
 		// declaracion de beens cuando no podemos acceder al codigo o no podemos realizar modificaciones
 		String nombreAplicacion = context.getBean(String.class);
 		log.info("Nombre de la aplicacion -> {}", nombreAplicacion);
+
+		// ciclos de vida
+		LifeCycleBeen lifeCycleBeen = context.getBean(LifeCycleBeen.class);
+		ExplicitBeen explicitBeen = context.getBean(ExplicitBeen.class);
 
 	}
 
