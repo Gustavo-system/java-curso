@@ -4,7 +4,6 @@ import com.udemy.modulo.one.helloworld.inyecciones.Coche;
 import com.udemy.modulo.one.helloworld.lifecycle.ExplicitBeen;
 import com.udemy.modulo.one.helloworld.lifecycle.LifeCycleBeen;
 import com.udemy.modulo.one.helloworld.profiles.EnviromentService;
-import com.udemy.modulo.one.helloworld.qualifiers.Animal;
 import com.udemy.modulo.one.helloworld.qualifiers.Granja;
 import com.udemy.modulo.one.helloworld.scopes.EjemploScopeService;
 import org.slf4j.Logger;
@@ -53,7 +52,6 @@ public class HelloWorldApplication {
 		 * Animal animal = context.getBean("pajarito", Animal.class);
 		 * log.info("Objeto animal: nombre {} edad {}", animal.getNombre(), animal.getEdad());
 		 */
-
 		Granja granja = context.getBean(Granja.class);
 		granja.imprimirInfo();
 
