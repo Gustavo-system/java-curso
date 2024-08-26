@@ -1,8 +1,7 @@
 package com.cursos.app.controllers;
 
 import com.cursos.app.models.User;
-import com.cursos.app.services.UserService;
-import jakarta.websocket.server.PathParam;
+import com.cursos.app.services.UsuariosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +14,7 @@ import java.util.List;
 public class UsuariosController {
 
     @Autowired
-    private UserService userService;
+    private UsuariosService userService;
 
     @GetMapping("/up")
     public String up(){

@@ -28,7 +28,7 @@ public class RoleService {
 
     public Role updateRole(Integer id, Role request) {
         Optional<Role> result = roleRepository.findById(id);
-        if(result.isEmpty()){
+        if(result.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("Role id $d no existe", id));
         }
 
