@@ -29,7 +29,7 @@ public class UsuariosController {
     }
 
     @GetMapping("/users/filter")
-    public ResponseEntity<List<User>> filterUsers(@PathParam("inicial") String inicial){
+    public ResponseEntity<List<User>> filterUsers(@RequestParam(value = "inicial", required = false) String inicial){
         return new ResponseEntity<>(userService.filterUser(inicial), HttpStatus.OK);
     }
 
