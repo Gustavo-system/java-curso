@@ -3,6 +3,8 @@ package com.cursos.app.services;
 import com.cursos.app.entities.User;
 import com.cursos.app.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -33,6 +35,14 @@ public class UserService {
         return userRepository.findByUsername(username).orElseThrow(
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("usuario no encontrado $d", username))
         );
+    }
+
+    public Page<User> getUsersPaginator(int page, int size) {
+        return userRepository.findAll(PageRequest.of(page, size));
+    }
+
+    public Page<String> getUserNames(int page, int size) {
+        return userRepository.getAllUsersOnlyUsernames(PageRequest.of(page, size));
     }
 
     public User createUser(User request) {

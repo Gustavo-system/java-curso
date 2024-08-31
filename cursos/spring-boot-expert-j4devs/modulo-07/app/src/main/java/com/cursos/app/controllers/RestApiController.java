@@ -5,6 +5,7 @@ import com.cursos.app.entities.User;
 import com.cursos.app.services.RoleService;
 import com.cursos.app.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -54,6 +55,23 @@ public class RestApiController {
     @PostMapping(value = "/users")
     public ResponseEntity<User> createUser(@RequestBody() User request) {
         return new ResponseEntity<>(userService.createUser(request), HttpStatus.OK);
+    }
+
+    /**
+     * Para evitar errores en la peticion se deben agregar los valor de require y defaulValue, en caso de que no se le envien esos valores en la peticion
+     * @param page
+     * @param size
+     * @return Retorna un Tipo Page
+     */
+    @GetMapping(value = "/users/paginator")
+    public ResponseEntity<Page> getUsersPaginator(@RequestParam(value = "page", required = false, defaultValue = "0") int page, @RequestParam(value = "size", required = false, defaultValue = "10") int size) {
+        return new ResponseEntity<>(userService.getUsersPaginator(page, size), HttpStatus.OK);
+    }
+
+
+    @GetMapping(value = "/users/usernames")
+    public ResponseEntity<Page> getUserNames(@RequestParam(value = "page", required = false, defaultValue = "0") int page, @RequestParam(value = "size", required = false, defaultValue = "10") int size) {
+        return new ResponseEntity<>(userService.getUserNames(page, size), HttpStatus.OK);
     }
 
 }
