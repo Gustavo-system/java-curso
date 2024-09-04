@@ -23,6 +23,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     /**
      * Esto no es SQL es JPQL
+     * Se le agrega Pageable para poder utilizar el paginado
      * @return retorna solo los usernames
      */
     @Query("SELECT u.username FROM User as u")

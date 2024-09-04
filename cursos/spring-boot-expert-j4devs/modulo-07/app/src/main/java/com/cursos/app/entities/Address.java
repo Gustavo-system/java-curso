@@ -1,6 +1,6 @@
 package com.cursos.app.entities;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "address")

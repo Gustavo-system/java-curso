@@ -4,6 +4,9 @@ import com.cursos.app.entities.Role;
 import com.cursos.app.entities.User;
 import com.cursos.app.services.RoleService;
 import com.cursos.app.services.UserService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -43,6 +46,13 @@ public class RestApiController {
     }
 
     @GetMapping(value = "/users/{user_id}")
+    @ApiOperation(value = "Retorna un usuario por id", response = User.class)
+    @ApiResponses(
+            value = {
+                    @ApiResponse(code = 200, message = "Operacion exitosa"),
+                    @ApiResponse(code = 404, message = "No se encontro informacion del usuario")
+            }
+    )
     public ResponseEntity<User> getUserById(@PathVariable(value = "user_id", required = true) Integer id) {
         return new ResponseEntity<>(userService.getUserById(id), HttpStatus.OK);
     }

@@ -2,13 +2,13 @@ package com.cursos.app.services;
 
 import com.cursos.app.models.User;
 import com.github.javafaker.Faker;
-import jakarta.annotation.PostConstruct;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
