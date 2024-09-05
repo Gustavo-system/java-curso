@@ -3,6 +3,7 @@ package com.cursos.app.services;
 import com.cursos.app.entities.Role;
 import com.cursos.app.repositories.RoleRespository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -24,6 +25,16 @@ public class RoleService {
 
     public Role postRole(Role role) {
         return roleRepository.save(role);
+    }
+
+    /**
+     * la anotacion @Cacheable() es para que no se este consultando la base de datos en cada peticion y optimizar el proceso
+     */
+    @Cacheable("roles")
+    public Role getRoleById(Integer id) {
+        return roleRepository.findById(id).orElseThrow(
+                () -> new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("El rol indicado no existe %s", id))
+        );
     }
 
     public Role updateRole(Integer id, Role request) {

@@ -18,7 +18,7 @@ public class SwaggerConfig {
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(getApiInfo())
+                .apiInfo(this.getApiInfo())
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.cursos.app.controllers"))
                 .paths(PathSelectors.any())

@@ -22,6 +22,13 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+		<!-- Spring caching -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-cache</artifactId>
+		</dependency>
+		<!-- fin de la dependencias de spring caching -->
+
 		<!-- Actuator para las metricas -->
 		<dependency>
 			<groupId>io.springfox</groupId>
@@ -34,7 +41,7 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>2.9.2</version>
 		</dependency>
-		<!-- fin de los pliguns para documentar -->
+		<!-- fin de los plugins para documentar -->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

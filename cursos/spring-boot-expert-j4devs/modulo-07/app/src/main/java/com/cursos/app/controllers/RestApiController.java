@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +29,11 @@ public class RestApiController {
     @GetMapping(value = "/roles")
     public ResponseEntity<List<Role>> getRoles(){
         return new ResponseEntity<>(roleService.getRoles(), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/roles/{role_id}")
+    public ResponseEntity<Role> getRoleById(@PathVariable(value = "role_id") Integer id) {
+        return new ResponseEntity<>(roleService.getRoleById(id), HttpStatus.OK);
     }
 
     @PostMapping(value = "/roles")
