@@ -1,6 +1,7 @@
 package com.udemy.modulo.one.helloworld;
 
 import com.udemy.modulo.one.helloworld.aop.TarjetObject;
+import com.udemy.modulo.one.helloworld.aop.practica.MetodosGenericos;
 import com.udemy.modulo.one.helloworld.inyecciones.Coche;
 import com.udemy.modulo.one.helloworld.lifecycle.ExplicitBeen;
 import com.udemy.modulo.one.helloworld.lifecycle.LifeCycleBeen;
@@ -77,6 +78,11 @@ public class HelloWorldApplication {
 		TarjetObject tarjetObject = context.getBean(TarjetObject.class);
 		tarjetObject.hello();
 		tarjetObject.parseString("hola desde el init");
+
+		log.info("---------------------------------------------");
+
+		MetodosGenericos metodosGenericos = context.getBean(MetodosGenericos.class);
+		log.info("valor retorno con la anotacion personalizada -> {} ", metodosGenericos.convertAllToUpperCase("gus"));
 
 	}
 
