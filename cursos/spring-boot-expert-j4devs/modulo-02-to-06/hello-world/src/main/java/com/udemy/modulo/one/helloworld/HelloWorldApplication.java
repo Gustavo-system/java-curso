@@ -1,5 +1,6 @@
 package com.udemy.modulo.one.helloworld;
 
+import com.udemy.modulo.one.helloworld.aop.TarjetObject;
 import com.udemy.modulo.one.helloworld.inyecciones.Coche;
 import com.udemy.modulo.one.helloworld.lifecycle.ExplicitBeen;
 import com.udemy.modulo.one.helloworld.lifecycle.LifeCycleBeen;
@@ -71,6 +72,11 @@ public class HelloWorldApplication {
 		// ciclos de vida
 		LifeCycleBeen lifeCycleBeen = context.getBean(LifeCycleBeen.class);
 		ExplicitBeen explicitBeen = context.getBean(ExplicitBeen.class);
+
+		// programacion orientada a aspectos
+		TarjetObject tarjetObject = context.getBean(TarjetObject.class);
+		tarjetObject.hello();
+		tarjetObject.parseString("hola desde el init");
 
 	}
 

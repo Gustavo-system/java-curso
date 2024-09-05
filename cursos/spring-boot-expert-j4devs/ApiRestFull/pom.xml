@@ -5,17 +5,19 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.2.5</version>
+		<version>2.7.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.udemy.modulo.one</groupId>
-	<artifactId>hello-world</artifactId>
+	<groupId>com.curso.dev4j</groupId>
+	<artifactId>ApiRestFull</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>hello-world</name>
-	<description>Primeros conceptos del curso de udemy modulo one</description>
+	<name>ApiRestFull</name>
+	<description>Aplicando los conocimientos para la contruccion de un api rest, esta api solo es para obtener el listado de peliculas y categorias para despues contruir el front end en react</description>
+
 	<properties>
 		<java.version>17</java.version>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -24,16 +26,10 @@
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-aop</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
