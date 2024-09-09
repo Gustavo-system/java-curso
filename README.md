@@ -126,3 +126,82 @@ double converted to byte
 b and x 128.128 -128
 ```
 
+## Enum
+
+Los enum sin un tipo de dato especial que una variable sea un conjunto de constantes predefinidas, debido a que son constantes, los nombres de los campos de tipo **enum** se deben definir en **mayusculas**.
+
+Se debe usar tipos **enum** siempre que se necesite representar un conjunto fijo de constantes
+
+```
+publuc enum DiaSemanas {
+    DOMINGO, LUNES, MARTES, MIÉRCOLES, JUEVES, VIERNES, SÁBADO
+}
+```
+
+
+## Condicionales
+
+1) Utiliza ***if*** para especificar un bloque de código que se ejecutará si se cumple una condición determinada.
+```
+if (day == "Monday") // Condition
+{
+	// Decision
+	System.out.println("Go to School");
+}
+```
+
+2) Utiliza ***else*** para especificar un bloque de código que se ejecutará si la misma condición es falsa.
+```
+String myDay = "Llueve"
+
+// Condition
+if (myDay == "Soleado"){
+	System.out.println("Go to School");
+}
+else {
+	System.out.println("Don´t go to School");
+}
+```
+3) Utiliza ***else if*** para especificar una nueva condición que se probará; si la primera condición es falsa.
+```
+String myDay = "nublado"
+
+
+if (myDay == "Soleado") {
+	System.out.println("Go to School");
+}
+else if(myDay == "nublado") {
+	System.out.println("Maybe you can go to School");
+}
+else {
+	System.out.println("Don´t go to School");
+}
+```
+4) Utiliza ***switch*** para especificar muchos bloques alternativos de código que se ejecutarán.
+La sentencia ***default*** se ejecutara cunado no haga mach con ningun caso
+```
+int myDay = 4;
+
+switch (myDay) {
+	case 1:
+		System.out.println("Read in the Library");
+		break;
+	case 2:
+		System.out.println("Read at Home");
+		break;
+	case 3:
+		System.out.println("Read in the Garden");
+		break;
+	default:
+		System.out.println("Get some Sleep");
+		break;
+}
+```
+5) Utiliza el operador ***?,:*** para especificar una condición de una sola línea.
+```
+// condicion ? expresión_si_verdadero : expresión_si_falso;
+
+int edad = 19;
+
+String mensaje = (edad >= 18) ? "Eres mayor de edad" : "Eres menor de edad"
+```
