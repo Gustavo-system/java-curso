@@ -248,5 +248,36 @@ Java is fun
 
 * **while**
 
+1) un bloque de código repetidamente mientras se cumpla una determinada condición. Es decir, mientras la condición sea verdadera, el código dentro del bucle se ejecutará una y otra vez
+
+```
+while (condición) {
+    // Código a ejecutar mientras la condición sea verdadera
+}
+```
 
 * **do...while**
+
+- un bloque de código al menos una vez y luego repetirlo mientras se cumpla una determinada condición. Es decir, el código dentro del bucle se ejecuta primero y después se verifica si la condición es verdadera para repetirlo
+
+```
+do {
+  // Código a ejecutar
+} while (condición);
+```
+
+1) Ejecución inicial: El código dentro del bloque do se ejecuta al menos una vez, sin importar si la condición es verdadera o falsa.
+
+2) Verificación de la condición: Después de ejecutar el código, se evalúa la condición especificada en la cláusula while.
+
+3) Repetición: Si la condición es verdadera, el código dentro del bloque do se vuelve a ejecutar y se vuelve a evaluar la condición. Este proceso continúa hasta que la condición sea falsa.
+
+```
+int numero;
+
+do {
+	System.out.println(i);
+	i++;
+} while (i <= 10);
+```
+
