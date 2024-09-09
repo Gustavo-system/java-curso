@@ -205,3 +205,48 @@ int edad = 19;
 
 String mensaje = (edad >= 18) ? "Eres mayor de edad" : "Eres menor de edad"
 ```
+
+
+## Bucles en Java
+
+En la programación de computadoras, los bucles se utilizan para repetir un bloque de código. Por ejemplo, si deseas mostrar un mensaje 100 veces, en lugar de escribir el mismo código 100 veces, puedes usar un bucle.
+
+En Java, hay tres tipos de bucles:
+
+* **for**
+
+1) La **inicializacion** inicializa y/o declara variables y se ejecuta solo una vez.
+
+2) Se evalúa la **condición**. Si la **condición** es **verdadera**, se ejecuta el cuerpo del bucle for.
+
+3) La **expresión** de actualización actualiza el valor de la expresión inicial "**inicializacion**".
+
+4) Se evalúa nuevamente la condición. El proceso continúa hasta que la condición sea **falsa**.
+
+```
+// sintax
+for (inicializacion; condicion; exprecion) {
+    // body of the loop
+}
+```
+
+```
+// ejemplo
+int n = 5;
+
+for (int i = 1; i <= n; ++i) {
+	System.out.println("Java is fun");
+}
+
+// salida
+Java is fun
+Java is fun
+Java is fun
+Java is fun
+Java is fun
+```
+
+* **while**
+
+
+* **do...while**

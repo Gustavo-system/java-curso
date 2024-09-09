@@ -13,7 +13,7 @@ public class Loops {
         // for desestructurado
         int iteradorDos = 0;
         for(;;){
-            if(iteradorDos > 5){
+            if(iteradorDos > 5) {
                 break;
             }
             System.out.println("ronda 2: " + iteradorDos);
@@ -31,7 +31,7 @@ public class Loops {
 
         // while
         int contador = 0;
-        while(contador < 5){
+        while(contador < 5) {
             System.out.println("ronda 3: " + contador);
             contador++;
         }
