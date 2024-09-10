@@ -13,7 +13,7 @@ public class AutomovilMain {
 
         // Se comparan los objetos para saber si son distintos
         System.out.println("Se compara igualdad por espacio de memoria -> " + (automovilVersa == automovilVersa2));
-        System.out.println("Se compara igualdad por valores" + automovilVersa.equals(automovilVersa2)); // se sobre escribe el metodo equals
+        System.out.println("Se compara igualdad por valores " + automovilVersa.equals(automovilVersa2)); // se sobre escribe el metodo equals
 
         // se imprime el objeto con la @Override del toString();
         System.out.println("forma implicita -> " + automovilJetta); // forma implicita
@@ -47,17 +47,17 @@ public class AutomovilMain {
 
         // se manda a llamar el artibuto esatico con la clase para que sea mas explicito.
         Automovil.valoracion = 4.5;
-        System.out.println("-> El " + automovilJetta.getModelo()  + " " + Automovil.valoracion());
-        System.out.println("-> El " + automovilJetta.getModelo()  + " es de tipo " + automovilJetta.getTipoAutomovil().getTipoAutomovil() + " con un rin de: " + automovilJetta.getTipoAutomovil().getRin());
+        System.out.println("-> El " + automovilJetta.getModelo() + " " + Automovil.valoracion());
+        System.out.println("-> El " + automovilJetta.getModelo() + " es de tipo " + automovilJetta.getTipoAutomovil().getTipoAutomovil() + " con un rin de: " + automovilJetta.getTipoAutomovil().getRin());
 
         // si fuera un static privado tendramos que crearle el metodo getter anf setter, el metodo debe ser estatico
         Automovil.setNumeroPuertas(5);
         System.out.println("-> El " + automovilVersa.getModelo() + " Tiene un total de " + Automovil.getNumeroPuertas() + " puertas.");
-        System.out.println("-> El " + automovilVersa.getModelo()  + " es de tipo " + automovilVersa.getTipoAutomovil().getTipoAutomovil() + " con un rin de: " + automovilVersa.getTipoAutomovil().getRin());
+        System.out.println("-> El " + automovilVersa.getModelo() + " es de tipo " + automovilVersa.getTipoAutomovil().getTipoAutomovil() + " con un rin de: " + automovilVersa.getTipoAutomovil().getRin());
 
         // sentencia switch con los enum
         TiposAutomoviles tipo = automovilJetta.getTipoAutomovil();
-        switch (tipo){
+        switch (tipo) {
             case SEDAN:
                 System.out.println("Los Sedan son de los autos mas preferidos por las familias");
                 break;

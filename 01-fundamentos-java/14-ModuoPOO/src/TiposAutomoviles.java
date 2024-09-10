@@ -7,21 +7,21 @@ public enum TiposAutomoviles {
     private final String sizeCar;
     private final int rin;
 
-    TiposAutomoviles(String tipoAutomovil, String sizeCar, int rin){
+    TiposAutomoviles(String tipoAutomovil, String sizeCar, int rin) {
         this.tipoAutomovil = tipoAutomovil;
         this.sizeCar = sizeCar;
         this.rin = rin;
     }
 
-    public String getTipoAutomovil(){
+    public String getTipoAutomovil() {
         return this.tipoAutomovil;
     }
 
-    public String getSizeCar(){
+    public String getSizeCar() {
         return this.sizeCar;
     }
 
-    public int getRin(){
+    public int getRin() {
         return this.rin;
     }
 }

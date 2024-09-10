@@ -1,7 +1,7 @@
 public enum Colores {
     /*
-    * Es una coleccion de valores contantes
-    */
+     * Es una coleccion de valores contantes
+     */
     ROJO("rojo"),
     AMARILLO("amarillo"),
     BLANCO("blanco"),
@@ -11,7 +11,7 @@ public enum Colores {
 
     private final String color;
 
-    Colores(String color){
+    Colores(String color) {
         this.color = color;
     }
 

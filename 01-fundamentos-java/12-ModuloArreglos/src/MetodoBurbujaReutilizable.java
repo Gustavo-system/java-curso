@@ -1,7 +1,7 @@
 public class MetodoBurbujaReutilizable {
 
     // para hacer metodos genericos al no saber que tipo de dato se pasara por parametro
-    // usamos el la clase Object
+    // usamos la clase Object
     public static Object[] metodoBurburja(Object[] arrayOrdenar) {
         int sizeArray = arrayOrdenar.length;
         int count = 0;

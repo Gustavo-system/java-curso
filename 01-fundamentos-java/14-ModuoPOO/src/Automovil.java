@@ -34,20 +34,21 @@ public class Automovil {
     private static final int NUMERO_NEUMATICOS = 4;
 
     // constructores y sobre carga de contructores
-    public Automovil(){}
+    public Automovil() {
+    }
 
-    public Automovil(String fabricante, String modelo){
+    public Automovil(String fabricante, String modelo) {
         this.fabricante = fabricante;
         this.modelo = modelo;
     }
 
-    public Automovil(String fabricante, String modelo, String marca, Colores color){
+    public Automovil(String fabricante, String modelo, String marca, Colores color) {
         this(fabricante, modelo);
         this.marca = marca;
         this.color = color;
     }
 
-    public Automovil(String fabricante, String modelo, String marca, Colores color, double cilindros, int litros, TiposAutomoviles tipoAutomovil){
+    public Automovil(String fabricante, String modelo, String marca, Colores color, double cilindros, int litros, TiposAutomoviles tipoAutomovil) {
         this(fabricante, modelo, marca, color);
         this.cilindros = cilindros;
         this.litros = litros;
@@ -55,39 +56,39 @@ public class Automovil {
     }
 
     // crear metodos para acceder a los datos -> Getters and Setters
-    public String getFabricante(){
+    public String getFabricante() {
         return this.fabricante;
     }
 
-    public String getModelo(){
+    public String getModelo() {
         return this.modelo;
     }
 
-    public String getMarca(){
+    public String getMarca() {
         return this.marca;
     }
 
-    public Colores getColor(){
+    public Colores getColor() {
         return this.color;
     }
 
-    public double getCilindros(){
+    public double getCilindros() {
         return this.cilindros;
     }
 
-    public int getLitros(){
+    public int getLitros() {
         return this.litros;
     }
 
-    public TiposAutomoviles getTipoAutomovil(){
+    public TiposAutomoviles getTipoAutomovil() {
         return this.tipoAutomovil;
     }
 
-    public static int getNumeroPuertas(){
+    public static int getNumeroPuertas() {
         return Automovil.numeroPuertas;
     }
 
-    public void setFabricante(String fabricante){
+    public void setFabricante(String fabricante) {
         this.fabricante = fabricante;
     }
 
@@ -111,12 +112,12 @@ public class Automovil {
         this.litros = litros;
     }
 
-    public void setTipoAutomovil(TiposAutomoviles tipoAutomovil){
+    public void setTipoAutomovil(TiposAutomoviles tipoAutomovil) {
         this.tipoAutomovil = tipoAutomovil;
     }
 
     // es un metodo estatico para ponerle un nuevo valor a la variable estatica.
-    public static void setNumeroPuertas(int numeroPuertas){
+    public static void setNumeroPuertas(int numeroPuertas) {
         Automovil.numeroPuertas = numeroPuertas;
     }
 
@@ -131,15 +132,15 @@ public class Automovil {
      */
 
     // con this se hace referencia a los atributos de la misma clase
-    public void descripcion(){
+    public void descripcion() {
         System.out.println("el auto es un " + this.modelo + " marca "
-                            + this.marca + " de color " + this.color.getColor() + " con "
-                            + this.cilindros + " cilindros");
+                + this.marca + " de color " + this.color.getColor() + " con "
+                + this.cilindros + " cilindros");
     }
 
     // no es muy buena practica realizar impresiones en consola como se muestra arriba desde una clase
     // es mejor retornar un valor y aplicarlo en el main
-    public String descripcionAutomovil(){
+    public String descripcionAutomovil() {
         return "el auto es un " + this.modelo +
                 " marca " + this.marca +
                 " de color " + this.color.getColor() +
@@ -153,16 +154,16 @@ public class Automovil {
         * Las clases inician con mayuscula
         * nombres de metodos se separan por mayuscula -> CamelCase
     */
-    public String acelarando(int rpm){
+    public String acelarando(int rpm) {
         return "el auto " + this.marca + " esta acelerando a " + rpm + " rpm.";
     }
 
     // sobrecarga de metodos, se le agrega nueva funcionalidad cunado se realiza la sobrecarga
-    public double calcularConsumo(int kilometros, int cantidadGastada){
+    public double calcularConsumo(int kilometros, int cantidadGastada) {
         return kilometros / (this.litros * (cantidadGastada / 100f));
     }
 
-    public double calcularConsumo(int kilometros, float cantidadGastada){
+    public double calcularConsumo(int kilometros, float cantidadGastada) {
         return kilometros / (this.litros * cantidadGastada);
     }
 
@@ -171,16 +172,16 @@ public class Automovil {
     // el metodo estatico no puede ser privado
     // los estativos solo pueden usar estaticos, no se puede usar this o acceder de forma normal a un no estatico aunque este en la misma clase
     // si de alguna forma se cambia el valor del metodo estativo o valor estatico se cambia en todos los objetos
-    static String valoracion(){
+    static String valoracion() {
         return "tiene una valoracion de " + Automovil.valoracion + " estrellas en seguridad ";
     }
 
     // se agrega la palabra de @Override, se pude poner o no no afecta solo es para documentar
     @Override
-    public boolean equals(Object obj){
+    public boolean equals(Object obj) {
         Automovil automovil = (Automovil) obj;
         // validamos que solo se compare con valores de la clase
-        if(!(obj instanceof Automovil)){
+        if (!(obj instanceof Automovil)) {
             return false;
         }
         // validamos los datos que vienen en el objeto -> NullPointerException
@@ -189,7 +190,7 @@ public class Automovil {
 
     // sobre escribir el metodo toString()
     @Override
-    public String toString(){
+    public String toString() {
         return "Sobre carga de toString del automovil " + this.getModelo();
     }
 

@@ -32,9 +32,13 @@ public class ClasesWrapper {
         System.out.println("classStr.getName() = " + classStr.getSimpleName());
         System.out.println("classStr.getName() = " + classStr.getPackage());
 
-        for(Method metodo : classStr.getMethods()){
+        System.out.println("\n-------------------- Todos los metodos que tiene la clase String --------------------");
+
+        for (Method metodo : classStr.getMethods()) {
             System.out.println("metodo = " + metodo.getName());
         }
+
+        System.out.println("-------------------- Fin de los metodos que tiene la clase String --------------------");
 
     }
 }
