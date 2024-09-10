@@ -4,7 +4,7 @@ public class Loops {
         // FOR
         // si el bloque de codigo es una sola linea se puede usar sin las llaves
         // de lo contrario se deben usar las llaves
-        for(int iterador = 0; iterador <= 5; iterador++){
+        for (int iterador = 0; iterador <= 5; iterador++) {
             System.out.println("ronda 1: " + iterador);
         }
 
@@ -12,18 +12,19 @@ public class Loops {
 
         // for desestructurado
         int iteradorDos = 0;
-        for(;;){
-            if(iteradorDos > 5) {
+        for (; ; ) {
+            if (iteradorDos > 5) {
                 break;
             }
             System.out.println("ronda 2: " + iteradorDos);
             iteradorDos++;
         }
 
+        // foreach
         System.out.println("\nforeach");
 
         String[] namesPets = {"chanchito", "chanchito feliz", "borreguito"};
-        for (String namePet: namesPets) {
+        for (String namePet : namesPets) {
             System.out.println("namePet = " + namePet);
         }
 
@@ -31,7 +32,7 @@ public class Loops {
 
         // while
         int contador = 0;
-        while(contador < 5) {
+        while (contador < 5) {
             System.out.println("ronda 3: " + contador);
             contador++;
         }
@@ -40,9 +41,9 @@ public class Loops {
 
         // do-while
         int contadorNuevo = 0;
-        do{
+        do {
             System.out.println("se ejecuta al menos una vez");
-        }while (contadorNuevo != 0);
+        } while (contadorNuevo != 0);
 
     }
 }

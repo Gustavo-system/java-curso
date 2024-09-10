@@ -8,7 +8,7 @@ public class sentenciaForArreglos {
         //String foods[] = {"tacos", "cemitas", "pizza"}; // se puede definir como arreglo en el nombre
 
         int count = pets.length; // por buenas practicas se podria declarar el contador fuera del for para solo inicializarlo una vez
-        for (int i=0; i < count; i++){
+        for (int i = 0; i < count; i++) {
             System.out.println("pets number: " + i + " type: " + pets[i]);
         }
 
@@ -23,6 +23,12 @@ public class sentenciaForArreglos {
                 System.out.println("si se encontro el tipo de mascota");
                 break;
             }
+        }
+
+        if(encontrado) {
+            JOptionPane.showMessageDialog(null, String.format("Mascota %s encontrada", pet));
+        } else {
+            JOptionPane.showMessageDialog(null, "Mascota no encontrada");
         }
     }
 }

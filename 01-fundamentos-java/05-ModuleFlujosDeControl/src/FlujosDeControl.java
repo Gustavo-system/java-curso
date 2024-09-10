@@ -9,19 +9,19 @@ public class FlujosDeControl {
 
         // si el if o el else tiene una sola linea de codigo se puede poner sin las llaves,
         // si tiene mas de una es necesario pner las llaves
-        if(promedio >= 9.0 && promedio == 10.0){
-            String variableLocal= "variable dentro del scope del if";
+        if (promedio >= 9.0 && promedio == 10.0) {
+            String variableLocal = "variable dentro del scope del if";
             System.out.println("Si pasaste la materia, exelente");
-        }else if(promedio >= 7.5 && promedio <= 8.9 ){ // se puede agragar el else if()
+        } else if (promedio >= 7.5 && promedio <= 8.9) { // se puede agragar el else if()
             System.out.println("Aprobado con promedio mejorable!");
-        }else{
+        } else {
             System.out.println("No pasaste la materia");
         }
 
         // flujo de control switch
         // se aplica a cualquier tipo de dato except long
         int caso = 3;
-        switch (caso){
+        switch (caso) {
             case 1:
                 System.out.println("entra al caso uno");
                 break; // cuando encuentra un caso se sale con el break
