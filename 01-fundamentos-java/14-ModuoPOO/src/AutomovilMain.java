@@ -45,16 +45,24 @@ public class AutomovilMain {
         System.out.println("-> " + automovilJetta.calcularConsumo(100, 40));
         System.out.println("-> " + automovilJetta.calcularConsumo(100, 0.50f));
 
-        // se manda a llamar el artibuto esatico con la clase para que sea mas explicito.
+        System.out.println();
+
+        // se manda a llamar el artibuto estaticos con la clase para que sea mas explicito.
         Automovil.valoracion = 4.5;
         System.out.println("-> El " + automovilJetta.getModelo() + " " + Automovil.valoracion());
         System.out.println("-> El " + automovilJetta.getModelo() + " es de tipo " + automovilJetta.getTipoAutomovil().getTipoAutomovil() + " con un rin de: " + automovilJetta.getTipoAutomovil().getRin());
 
+        System.out.println();
         // si fuera un static privado tendramos que crearle el metodo getter anf setter, el metodo debe ser estatico
         Automovil.setNumeroPuertas(5);
         System.out.println("-> El " + automovilVersa.getModelo() + " Tiene un total de " + Automovil.getNumeroPuertas() + " puertas.");
         System.out.println("-> El " + automovilVersa.getModelo() + " es de tipo " + automovilVersa.getTipoAutomovil().getTipoAutomovil() + " con un rin de: " + automovilVersa.getTipoAutomovil().getRin());
 
+        System.out.println();
+        System.out.println("-> Id registro del " + automovilJetta.getModelo() + "es " + automovilJetta.getId());
+        System.out.println("-> Id registro del " + automovilVersa.getModelo() + "es " + automovilVersa.getId());
+
+        System.out.println("\n-------- switch con los enum --------");
         // sentencia switch con los enum
         TiposAutomoviles tipo = automovilJetta.getTipoAutomovil();
         switch (tipo) {
@@ -67,6 +75,12 @@ public class AutomovilMain {
             case HATCHBACK:
                 System.out.println("Los Hatchback");
                 break;
+        }
+
+        System.out.println("\n-------- foreach con los enum --------");
+        TiposAutomoviles[] tipos = TiposAutomoviles.values();
+        for (TiposAutomoviles tipoAuto : tipos) {
+            System.out.println("tipo -> " + tipoAuto + ", tipo automovil " + tipoAuto.getTipoAutomovil() + ", tamaño " + tipoAuto.getSizeCar());
         }
 
     }

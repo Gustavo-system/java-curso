@@ -13,6 +13,7 @@ public class Automovil {
      * protected
      * default
      */
+    private int id;
 
     // atributos de la clase
     private String fabricante;
@@ -27,17 +28,22 @@ public class Automovil {
     static double valoracion = 5.0;
 
     // si se tiene una variable estatica y privada se deben crear los metodos de acceso y estos deben ser estaticos
+    // las variables estaticas conservan su valor
     private static int numeroPuertas = 4;
+    private static int lastID;
 
     // atributos final - constantes
     // siempre se debe inicializar con un valor y por lo regular siempre son static
+    // si queremos acceder a su valor fuera de la clase se debe hacer publica o en caso de que sea privada agregar su getter
     private static final int NUMERO_NEUMATICOS = 4;
 
     // constructores y sobre carga de contructores
     public Automovil() {
+        this.id = ++Automovil.lastID;
     }
 
     public Automovil(String fabricante, String modelo) {
+        this();
         this.fabricante = fabricante;
         this.modelo = modelo;
     }
@@ -53,6 +59,14 @@ public class Automovil {
         this.cilindros = cilindros;
         this.litros = litros;
         this.tipoAutomovil = tipoAutomovil;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     // crear metodos para acceder a los datos -> Getters and Setters
@@ -117,6 +131,7 @@ public class Automovil {
     }
 
     // es un metodo estatico para ponerle un nuevo valor a la variable estatica.
+    // siempre que la variable sea estatica y privada se debe crear su metodo get and set de forma static tambien
     public static void setNumeroPuertas(int numeroPuertas) {
         Automovil.numeroPuertas = numeroPuertas;
     }
@@ -140,6 +155,7 @@ public class Automovil {
 
     // no es muy buena practica realizar impresiones en consola como se muestra arriba desde una clase
     // es mejor retornar un valor y aplicarlo en el main
+    // Automovil.NUMERO_NEUMATICOS se puede especificar de esa forma o solo colocar NUMERO_NEUMATICOS porque es static
     public String descripcionAutomovil() {
         return "el auto es un " + this.modelo +
                 " marca " + this.marca +
@@ -189,9 +205,23 @@ public class Automovil {
     }
 
     // sobre escribir el metodo toString()
+    //@Override
+    //public String toString() {
+        //return "Sobre carga de toString del automovil " + this.getModelo();
+    //}
+
+
     @Override
     public String toString() {
-        return "Sobre carga de toString del automovil " + this.getModelo();
+        return "{" +
+                "id='" + id + "'" +
+                "fabricante='" + fabricante + '\'' +
+                ", modelo='" + modelo + '\'' +
+                ", marca='" + marca + '\'' +
+                ", color=" + color +
+                ", cilindros=" + cilindros +
+                ", litros=" + litros +
+                ", tipoAutomovil=" + tipoAutomovil +
+                '}';
     }
-
 }
