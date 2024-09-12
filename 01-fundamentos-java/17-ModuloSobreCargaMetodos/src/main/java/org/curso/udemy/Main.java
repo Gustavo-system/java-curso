@@ -11,5 +11,8 @@ public class Main {
         System.out.println("suma int 2 = "+ calculadora.sumar(2, 2, 2));
         System.out.println("suma float 3 = "+ calculadora.sumar(2.0, 2.0));
 
+        // utilizanco metodos staticos
+        System.out.println("suma argumentos indefinidos y como metodo static " + Calculadora.sumar(2,2,3,4,6,10));
+
     }
 }

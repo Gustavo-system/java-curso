@@ -18,4 +18,13 @@ public class Calculadora {
         return a + b;
     }
 
+    public static Integer sumar(int... argumentos) {
+        int total = 0;
+        for(int argumento : argumentos){
+            total += argumento;
+        }
+
+        return total;
+    }
+
 }
