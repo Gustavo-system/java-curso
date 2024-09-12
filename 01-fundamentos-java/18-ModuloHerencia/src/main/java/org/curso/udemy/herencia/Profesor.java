@@ -30,4 +30,9 @@ public class Profesor extends Persona {
     public void setDoctorado(boolean doctorado) {
         this.doctorado = doctorado;
     }
+
+    @Override
+    public String toString() {
+        return String.format(" { 'profesor' : { 'asignatura' : %s, 'score' : %s , 'doctorado' : %s }, %s } ", asignatura, score, doctorado, super.toString());
+    }
 }

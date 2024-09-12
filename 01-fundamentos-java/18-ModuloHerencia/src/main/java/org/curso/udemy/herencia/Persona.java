@@ -8,6 +8,14 @@ package org.curso.udemy.herencia;
  */
 public class Persona {
 
+    /**
+     * Para que los datos puedan ser visibles en las clases hijas se puede realizar de fos formas
+     * 1. agregar los metodos getter and setter
+     * 2. cambiar el valor de private a protected
+     * la palabra reservada protected hace que solo las clases hijas puedan acceder a esos atributos de la clase padre
+     *
+     * sin embargo se recomienda que sean lo mas privado posible
+     */
     private String nombre;
     private String apellido;
     private int edad;
@@ -47,11 +55,6 @@ public class Persona {
 
     @Override
     public String toString() {
-        return "Persona Clase Padre {" +
-                "nombre='" + nombre + '\'' +
-                ", apellido='" + apellido + '\'' +
-                ", edad=" + edad +
-                ", email='" + email + '\'' +
-                '}';
+        return String.format("'persona' : { 'nombre' : %s, 'apellido' : %s , 'edad' : %s, 'email' : %s }", nombre, apellido, edad, email);
     }
 }
