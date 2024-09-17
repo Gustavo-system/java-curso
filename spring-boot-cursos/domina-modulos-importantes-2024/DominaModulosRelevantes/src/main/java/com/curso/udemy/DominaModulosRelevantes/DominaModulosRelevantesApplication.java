@@ -6,8 +6,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class DominaModulosRelevantesApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(DominaModulosRelevantesApplication.class, args);
-	}
+    /*
+     * Las tres anotaciones propias e importantes de springboot son
+     * @StringBootConfiguration
+     * @EnableAutoConfiguration
+     * @ComponentScan
+     */
+    public static void main(String[] args) {
+        SpringApplication.run(DominaModulosRelevantesApplication.class, args);
+    }
 
 }
