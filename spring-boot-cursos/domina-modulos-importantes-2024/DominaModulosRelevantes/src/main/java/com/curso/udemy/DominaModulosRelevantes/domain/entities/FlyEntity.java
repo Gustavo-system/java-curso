@@ -30,7 +30,7 @@ import java.math.BigDecimal;
 @Builder
 @AllArgsConstructor
 
-// definimos que sea un entidad
+// definimos que sea un entidad y el nombre de la tabla con la que hara referencia
 @Entity(name = "fly")
 public class FlyEntity  {
 
