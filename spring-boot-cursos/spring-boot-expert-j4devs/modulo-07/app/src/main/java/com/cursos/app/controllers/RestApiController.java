@@ -1,5 +1,6 @@
 package com.cursos.app.controllers;
 
+import com.cursos.app.aop.ActivityLogs;
 import com.cursos.app.entities.Role;
 import com.cursos.app.entities.User;
 import com.cursos.app.services.RoleService;
@@ -26,6 +27,7 @@ public class RestApiController {
     private UserService userService;
 
     @GetMapping(value = "/roles")
+    @ActivityLogs(path = "/roles")
     public ResponseEntity<List<Role>> getRoles(){
         return new ResponseEntity<>(roleService.getRoles(), HttpStatus.OK);
     }

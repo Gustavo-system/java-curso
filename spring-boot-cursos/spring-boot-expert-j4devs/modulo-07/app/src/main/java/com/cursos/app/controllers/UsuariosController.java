@@ -1,5 +1,6 @@
 package com.cursos.app.controllers;
 
+import com.cursos.app.aop.ActivityLogs;
 import com.cursos.app.models.User;
 import com.cursos.app.services.UsuariosService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +23,13 @@ public class UsuariosController {
     }
 
     //@GetMapping("/users")
+    @ActivityLogs(path = "/users")
     @RequestMapping(method = RequestMethod.GET, path = "/users") // una forma adicional para definir el recurso
     public ResponseEntity<List<User>> get(){
         return new ResponseEntity<>(userService.getUsers(), HttpStatus.OK);
     }
 
+    @ActivityLogs(path = "/users/filter")
     @GetMapping("/users/filter")
     public ResponseEntity<List<User>> filterUsers(@RequestParam(value = "inicial", required = false) String inicial){
         return new ResponseEntity<>(userService.filterUser(inicial), HttpStatus.OK);

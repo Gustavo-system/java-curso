@@ -1,5 +1,6 @@
 package com.cursos.app.services;
 
+import com.cursos.app.customexeptions.MessageException;
 import com.cursos.app.entities.Role;
 import com.cursos.app.repositories.RoleRespository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,10 @@ public class RoleService {
     private RoleRespository roleRepository;
 
     public List<Role> getRoles() {
+        if(true) {
+            throw new RuntimeException();
+        }
+
         // si la interfaz hereda de CrudRepository retornamos un iterable
         // si la interfaz hereda de JpaRepository ya nos da una lista
         return roleRepository.findAll();

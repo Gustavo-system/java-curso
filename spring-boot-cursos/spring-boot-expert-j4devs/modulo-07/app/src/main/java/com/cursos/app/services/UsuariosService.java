@@ -1,8 +1,11 @@
 package com.cursos.app.services;
 
+import com.cursos.app.customexeptions.MessageException;
 import com.cursos.app.models.User;
 import com.github.javafaker.Faker;
 import org.apache.logging.log4j.util.Strings;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -14,6 +17,8 @@ import java.util.List;
 
 @Service
 public class UsuariosService {
+
+    private static final Logger LOG = LoggerFactory.getLogger(UsuariosService.class);
 
     @Autowired
     private Faker faker;
@@ -31,7 +36,17 @@ public class UsuariosService {
     }
 
     public List<User> getUsers() {
-        return users;
+        LOG.info("consultando usuarios");
+
+        List<User> usuarios = users;
+
+        /*if(true){
+            throw new MessageException(1106);
+        }*/
+
+        LOG.info("se termino de consultar los usuarios");
+
+        return usuarios;
     }
 
     public User getUserById(Integer id) {
