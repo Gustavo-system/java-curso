@@ -3,10 +3,7 @@ package com.curso.udemy.DominaModulosRelevantes.domain.entities;
 // las nuevas versiones de spring ahora se importan de jakarta
 import com.curso.udemy.DominaModulosRelevantes.utils.AeroLine;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.util.Set;
@@ -80,6 +77,8 @@ public class FlyEntity  {
     @Column(name = "aero_line", length = 20)
     private AeroLine aeroLine;
 
+    @ToString.Exclude // se agrega para que no se cree un error de recursividad en el toString() ya que se invoca por las relaciones muchas veces
+    @EqualsAndHashCode.Exclude
     @OneToMany(
             cascade = CascadeType.ALL, // eliminar los registros en cascada
             fetch = FetchType.EAGER, // se especifica como sera la carga de los datos en este caso solo hasta que se invoque

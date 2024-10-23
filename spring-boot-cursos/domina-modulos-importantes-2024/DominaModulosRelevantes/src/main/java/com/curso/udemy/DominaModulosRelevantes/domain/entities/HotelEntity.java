@@ -1,10 +1,7 @@
 package com.curso.udemy.DominaModulosRelevantes.domain.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.util.Set;
@@ -33,6 +30,8 @@ public class HotelEntity {
     private Integer rating;
     private BigDecimal price;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @OneToMany(
             cascade = CascadeType.ALL, // eliminar los registros en cascada
             fetch = FetchType.EAGER, // se especifica como sera la carga de los datos en este caso solo hasta que se invoque
