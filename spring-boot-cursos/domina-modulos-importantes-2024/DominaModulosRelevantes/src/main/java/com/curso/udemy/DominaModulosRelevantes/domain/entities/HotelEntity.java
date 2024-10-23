@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -31,5 +32,13 @@ public class HotelEntity {
 
     private Integer rating;
     private BigDecimal price;
+
+    @OneToMany(
+            cascade = CascadeType.ALL, // eliminar los registros en cascada
+            fetch = FetchType.EAGER, // se especifica como sera la carga de los datos en este caso solo hasta que se invoque
+            orphanRemoval = true, // elimina un objeto en caso de que no tenga una llave foranea
+            mappedBy = "hotel" // mapeo de como se llama el campo en la relacion
+    )
+    private Set<ReservationEntity> reservation;
 
 }

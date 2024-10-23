@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.Set;
 
 /**
  * Se utiliza para que la entidad se pueda volver en bites y se inserte ne la base de datos
@@ -78,5 +79,13 @@ public class FlyEntity  {
     @Enumerated(EnumType.STRING)
     @Column(name = "aero_line", length = 20)
     private AeroLine aeroLine;
+
+    @OneToMany(
+            cascade = CascadeType.ALL, // eliminar los registros en cascada
+            fetch = FetchType.EAGER, // se especifica como sera la carga de los datos en este caso solo hasta que se invoque
+            orphanRemoval = true, // elimina un objeto en caso de que no tenga una llave foranea
+            mappedBy = "fly" // mapeo de como se llama el campo en la relacion, es el nombre del campo en la otra clase
+    )
+    private Set<TicketEntity> tickets;
 
 }
