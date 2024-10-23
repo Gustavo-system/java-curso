@@ -14,9 +14,10 @@ import java.util.Set;
 @AllArgsConstructor
 @Entity(name = "customer")
 public class CustomerEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long dni;
+    private Long id;
 
     @Column(name = "full_name", length = 50)
     private String fullName;
@@ -51,7 +52,5 @@ public class CustomerEntity {
             mappedBy = "customer"
     )
     private Set<TourEntity> tours;
-
-
 
 }

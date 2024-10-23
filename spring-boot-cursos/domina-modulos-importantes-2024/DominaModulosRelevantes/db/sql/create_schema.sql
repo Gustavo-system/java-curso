@@ -1,12 +1,12 @@
 CREATE TABLE customer
 (
-    dni            varchar(20) NOT NULL,
-    full_name       varchar(50) NOT NULL,
+    id             bigserial NOT NULL,
+    full_name      varchar(50) NOT NULL,
     credit_card    varchar(20) NOT NULL,
-    total_flights  int NOT NULL,
+    total_flights   int NOT NULL,
     total_lodgings int NOT NULL,
     total_tours    int NOT NULL,
-    phone_number  varchar(20) NOT NULL,
+    phone_number   varchar(20) NOT NULL,
     CONSTRAINT pk_customer PRIMARY KEY ( dni )
 );
 
@@ -45,7 +45,7 @@ CREATE TABLE tour
 
 CREATE TABLE reservation
 (
-    "id"             uuid NOT NULL,
+    "id"             bigserial NOT NULL,
     date_reservation timestamp NOT NULL,
     date_start       date NOT NULL,
     date_end         date NULL,
@@ -62,7 +62,7 @@ CREATE TABLE reservation
 
 CREATE TABLE ticket
 (
-    "id"           uuid NOT NULL,
+    "id"           bigserial NOT NULL,
     price          double precision NOT NULL,
     fly_id         bigint NOT NULL,
     customer_id    varchar(20) NOT NULL,
