@@ -3,7 +3,7 @@ package org.example;
 import org.example.cadenas.LimpiarCaracteres;
 import org.example.cifrados.rsa.Cifrado;
 import org.example.json.UtileriaJson;
-import org.example.json.entity.Persona;
+import org.example.json.entity.Alumno;
 
 public class Main {
 
@@ -18,15 +18,15 @@ public class Main {
             System.out.println("idCanal " + Cifrado.encrypt("1", llavePublica));
             System.out.println("idSucursal " + Cifrado.encrypt("100", llavePublica));
             System.out.println("folio " + Cifrado.encrypt("100045", llavePublica));
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("e = " + e);
         }
 
-        try{
-            String response = "{\"id\":123,\"name\":\"Juan\",\"lastName\":\"P\u00E9rez\",\"age\":30}";
-            Persona responseObjet = UtileriaJson.jsonAObjeto(response, Persona.class);
+        try {
+            String response = "{\"id\":123,\"name\":\"Juan\",\"lastName\":\"Perez\",\"age\":30,\"matricula\":\"PEPE123\", \"grado\": \"2\"}";
+            Alumno responseObjet = UtileriaJson.jsonAObjeto(response, Alumno.class);
             System.out.println("Objeto formado" + responseObjet);
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("e = " + e);
         }
 

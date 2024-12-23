@@ -6,6 +6,16 @@ public class Persona {
     private String lastName;
     private int age;
 
+    public Persona() {
+    }
+
+    public Persona(int id, String name, String lastName, int age) {
+        this.id = id;
+        this.name = name;
+        this.lastName = lastName;
+        this.age = age;
+    }
+
     public int getId() {
         return id;
     }
@@ -40,7 +50,7 @@ public class Persona {
 
     @Override
     public String toString() {
-        return "Persona{" +
+        return "Persona {" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", lastName='" + lastName + '\'' +
