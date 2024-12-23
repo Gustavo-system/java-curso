@@ -207,7 +207,7 @@ String mensaje = (edad >= 18) ? "Eres mayor de edad" : "Eres menor de edad"
 ```
 
 
-## Bucles en Java
+## Bucles / Loops
 
 En la programación de computadoras, los bucles se utilizan para repetir un bloque de código. Por ejemplo, si deseas mostrar un mensaje 100 veces, en lugar de escribir el mismo código 100 veces, puedes usar un bucle.
 
@@ -281,3 +281,38 @@ do {
 } while (i <= 10);
 ```
 
+## Funciones
+
+Definicion de la funcion, sintaxis
+
+* Un método/función es una forma de realizar alguna tarea. De manera similar, en programación como Java, un método de función es un bloque de código escrito para realizar una tarea específica repetidamente. Proporciona reutilización del código. Escribimos la función una vez y la usamos muchas veces. Funciona según el principio "SECO", es decir, "No te repitas".
+
+```
+sintaxis:
+
+scope datatype function_name(type parameters){
+	body
+}
+
+ejemplo:
+
+public Integer suma(int numero1, int numero2) {
+	return numero1 + numero2;
+}
+```
+
+* **funciones lambda**
+
+```
+sintaxis:
+
+parameter -> expression
+
+(parameter1, parameter2) -> expression
+
+(parameter1, parameter2) -> { code block }
+
+ejemplo:
+
+Consumer<Integer> method = (n) -> { System.out.println(n); };
+```
