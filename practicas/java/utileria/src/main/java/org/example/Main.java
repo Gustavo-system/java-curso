@@ -1,6 +1,9 @@
 package org.example;
 
+import org.example.cadenas.LimpiarCaracteres;
 import org.example.cifrados.rsa.Cifrado;
+import org.example.json.UtileriaJson;
+import org.example.json.entity.Persona;
 
 public class Main {
 
@@ -19,13 +22,18 @@ public class Main {
             System.out.println("e = " + e);
         }
 
+        try{
+            String response = "{\"id\":123,\"name\":\"Juan\",\"lastName\":\"P\u00E9rez\",\"age\":30}";
+            Persona responseObjet = UtileriaJson.jsonAObjeto(response, Persona.class);
+            System.out.println("Objeto formado" + responseObjet);
+        }catch (Exception e){
+            System.out.println("e = " + e);
+        }
 
+
+        String cadenaLimpia = LimpiarCaracteres.limpiarCaracteresEspeciales("Sin número.");
+        System.out.println(cadenaLimpia);
 
 
     }
-
-
-
-
-
 }

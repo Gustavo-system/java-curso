@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 
-public class utileriaJson {
+public class UtileriaJson {
 
     public static <T> T jsonAObjeto(String resultado, Class<T> objeto) throws Exception {
         ObjectMapper objectMapper = new ObjectMapper();
