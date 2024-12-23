@@ -23,14 +23,20 @@ public class Main {
         }
 
         try {
+            System.out.println("\n");
             String response = "{\"id\":123,\"name\":\"Juan\",\"lastName\":\"Perez\",\"age\":30,\"matricula\":\"PEPE123\", \"grado\": \"2\"}";
-            Alumno responseObjet = UtileriaJson.jsonAObjeto(response, Alumno.class);
-            System.out.println("Objeto formado" + responseObjet);
+            Alumno responseObjet = UtileriaJson.jsonToObjeto(response, Alumno.class);
+            System.out.println("Conversion a objeto = " + responseObjet);
+
+            String alumnoObject = UtileriaJson.objetoToJson(responseObjet);
+            System.out.println("Convercion a json = " + alumnoObject);
+
         } catch (Exception e) {
             System.out.println("e = " + e);
         }
 
 
+        System.out.println("\n");
         String cadenaLimpia = LimpiarCaracteres.limpiarCaracteresEspeciales("Sin número.");
         System.out.println(cadenaLimpia);
 
