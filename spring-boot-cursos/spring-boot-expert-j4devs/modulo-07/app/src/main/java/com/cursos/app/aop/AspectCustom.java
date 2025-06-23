@@ -1,6 +1,5 @@
 package com.cursos.app.aop;
 
-import com.cursos.app.customexeptions.MessageException;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
@@ -29,7 +28,7 @@ public class AspectCustom {
 
         if (result instanceof ResponseEntity) {
             int statusCode = ((ResponseEntity<?>) result).getStatusCode().value();
-            LOG.info("Servicio: {}, Codigo: {}, Sistema: {}, Detalle: {}", path, statusCode, "CREDITO", "Informacion obtenida");
+            LOG.info("AOP {} status code {}", path, statusCode);
         }
     }
 
@@ -40,13 +39,8 @@ public class AspectCustom {
         ActivityLogs activityLogsAnnotation = classNameMethod.getAnnotation(ActivityLogs.class);
         String path = activityLogsAnnotation.path();
 
-        if(ex instanceof MessageException){
-            Integer codigoError = ((MessageException) ex).getCodeError();
-            LOG.info("Servicio: {}, Codigo: {}, Sistema: {}, Detalle: {}", path, codigoError, "CREDITO", ex.getCause());
-        }
-        else{
-            LOG.info("Servicio: {}, Codigo: {}: Sistema: {}, Detalle {}", path, 404, "CREDITO", ex.getCause());
-        }
+        LOG.info("path: {}, Detalle: {}", path, ex.getCause());
+
     }
 
 }

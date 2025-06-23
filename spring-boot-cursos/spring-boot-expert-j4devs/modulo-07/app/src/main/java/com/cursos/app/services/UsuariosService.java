@@ -1,6 +1,5 @@
 package com.cursos.app.services;
 
-import com.cursos.app.customexeptions.MessageException;
 import com.cursos.app.models.User;
 import com.github.javafaker.Faker;
 import org.apache.logging.log4j.util.Strings;
@@ -36,17 +35,7 @@ public class UsuariosService {
     }
 
     public List<User> getUsers() {
-        LOG.info("consultando usuarios");
-
-        List<User> usuarios = users;
-
-        /*if(true){
-            throw new MessageException(1106);
-        }*/
-
-        LOG.info("se termino de consultar los usuarios");
-
-        return usuarios;
+        return users;
     }
 
     public User getUserById(Integer id) {
