@@ -15,9 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class UsuariosService {
+public class UsersFakerService {
 
-    private static final Logger LOG = LoggerFactory.getLogger(UsuariosService.class);
+    private static final Logger LOG = LoggerFactory.getLogger(UsersFakerService.class);
 
     @Autowired
     private Faker faker;
@@ -28,9 +28,11 @@ public class UsuariosService {
     private List<User> users = new ArrayList<>();
 
     @PostConstruct
-    public void init(){
+    public void init() {
+        LOG.info("Implementando LOGGER -> Cargando faker");
         for (int i = 0; i < 10; i++) {
-            users.add(new User(i + 1, faker.funnyName().name(), faker.name().username(), faker.dragonBall().character()));
+            users.add(
+                    new User(i + 1, faker.funnyName().name(), faker.name().username(), faker.dragonBall().character()));
         }
     }
 
@@ -40,10 +42,9 @@ public class UsuariosService {
 
     public User getUserById(Integer id) {
         return users.stream().filter(
-                user -> user.getId().equals(id)
-        ).findAny().orElseThrow(
-                () -> new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("USER %s NOT FOUND", id))
-        );
+                user -> user.getId().equals(id)).findAny().orElseThrow(
+                        () -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+                                String.format("USER %s NOT FOUND", id)));
     }
 
     public User createUser(User user) {
@@ -74,11 +75,11 @@ public class UsuariosService {
         //users.removeIf(item -> item.getId().equals(id));
     }
 
-    public List<User> filterUser(String inicial){
+    public List<User> filterUser(String inicial) {
         /*if(username == null || username.equals("")){
-            return users;
+        return users;
         }*/
-        if (Strings.isEmpty(inicial)){
+        if (Strings.isEmpty(inicial)) {
             return users;
         }
 

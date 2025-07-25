@@ -1,8 +1,7 @@
 package com.cursos.app.controllers;
 
-import com.cursos.app.aop.ActivityLogs;
 import com.cursos.app.models.User;
-import com.cursos.app.services.UsuariosService;
+import com.cursos.app.services.UsersFakerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,26 +11,24 @@ import java.util.List;
 
 @RestController // Stereotipo que define que es una api rest
 @RequestMapping("/api/v1")
-public class UsuariosController {
+public class UsersFakerController {
 
     @Autowired
-    private UsuariosService userService;
+    private UsersFakerService userService;
 
     @GetMapping("/up")
-    public String up(){
+    public String up() {
         return "Hola mundo";
     }
 
     //@GetMapping("/users")
-    @ActivityLogs(path = "/users")
     @RequestMapping(method = RequestMethod.GET, path = "/users") // una forma adicional para definir el recurso
-    public ResponseEntity<List<User>> get(){
+    public ResponseEntity<List<User>> get() {
         return new ResponseEntity<>(userService.getUsers(), HttpStatus.OK);
     }
 
-    @ActivityLogs(path = "/users/filter")
     @GetMapping("/users/filter")
-    public ResponseEntity<List<User>> filterUsers(@RequestParam(value = "inicial", required = false) String inicial){
+    public ResponseEntity<List<User>> filterUsers(@RequestParam(value = "inicial", required = false) String inicial) {
         return new ResponseEntity<>(userService.filterUser(inicial), HttpStatus.OK);
     }
 
@@ -41,17 +38,17 @@ public class UsuariosController {
     }
 
     @PostMapping(path = "/users")
-    public ResponseEntity<User> postUser(@RequestBody User request){
+    public ResponseEntity<User> postUser(@RequestBody User request) {
         return new ResponseEntity<>(userService.createUser(request), HttpStatus.CREATED);
     }
 
     @PutMapping(path = "/users/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable("id") Integer id, @RequestBody User request){
+    public ResponseEntity<User> updateUser(@PathVariable("id") Integer id, @RequestBody User request) {
         return new ResponseEntity<>(userService.updateUser(id, request), HttpStatus.OK);
     }
 
     @DeleteMapping(path = "/users/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable("id") Integer id){
+    public ResponseEntity<Void> deleteUser(@PathVariable("id") Integer id) {
         userService.deleteUser(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

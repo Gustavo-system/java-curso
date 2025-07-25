@@ -1,6 +1,5 @@
 package com.cursos.app.controllers;
 
-import com.cursos.app.aop.ActivityLogs;
 import com.cursos.app.entities.Role;
 import com.cursos.app.entities.User;
 import com.cursos.app.services.RoleService;
@@ -27,8 +26,7 @@ public class RestApiController {
     private UserService userService;
 
     @GetMapping(value = "/roles")
-    @ActivityLogs(path = "/roles")
-    public ResponseEntity<List<Role>> getRoles(){
+    public ResponseEntity<List<Role>> getRoles() {
         return new ResponseEntity<>(roleService.getRoles(), HttpStatus.OK);
     }
 
@@ -38,12 +36,13 @@ public class RestApiController {
     }
 
     @PostMapping(value = "/roles")
-    public ResponseEntity<Role> postRoles(@RequestBody(required = true) Role request){
+    public ResponseEntity<Role> postRoles(@RequestBody(required = true) Role request) {
         return new ResponseEntity<>(roleService.postRole(request), HttpStatus.OK);
     }
 
     @PutMapping(value = "/roles/{roleId}")
-    public ResponseEntity<Role> postRoles(@PathVariable("roleId") Integer id, @RequestBody(required = true) Role request){
+    public ResponseEntity<Role> postRoles(@PathVariable("roleId") Integer id,
+            @RequestBody(required = true) Role request) {
         return new ResponseEntity<>(roleService.updateRole(id, request), HttpStatus.OK);
     }
 
@@ -54,12 +53,10 @@ public class RestApiController {
 
     @GetMapping(value = "/users/{user_id}")
     @ApiOperation(value = "Retorna un usuario por id", response = User.class)
-    @ApiResponses(
-            value = {
-                    @ApiResponse(code = 200, message = "Operacion exitosa"),
-                    @ApiResponse(code = 404, message = "No se encontro informacion del usuario")
-            }
-    )
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Operacion exitosa"),
+            @ApiResponse(code = 404, message = "No se encontro informacion del usuario")
+    })
     public ResponseEntity<User> getUserById(@PathVariable(value = "user_id", required = true) Integer id) {
         return new ResponseEntity<>(userService.getUserById(id), HttpStatus.OK);
     }
@@ -81,13 +78,16 @@ public class RestApiController {
      * @return Retorna un Tipo Page
      */
     @GetMapping(value = "/users/paginator")
-    public ResponseEntity<Page> getUsersPaginator(@RequestParam(value = "page", required = false, defaultValue = "0") int page, @RequestParam(value = "size", required = false, defaultValue = "10") int size) {
+    public ResponseEntity<Page> getUsersPaginator(
+            @RequestParam(value = "page", required = false, defaultValue = "0") int page,
+            @RequestParam(value = "size", required = false, defaultValue = "10") int size) {
         return new ResponseEntity<>(userService.getUsersPaginator(page, size), HttpStatus.OK);
     }
 
-
     @GetMapping(value = "/users/usernames")
-    public ResponseEntity<Page> getUserNames(@RequestParam(value = "page", required = false, defaultValue = "0") int page, @RequestParam(value = "size", required = false, defaultValue = "10") int size) {
+    public ResponseEntity<Page> getUserNames(
+            @RequestParam(value = "page", required = false, defaultValue = "0") int page,
+            @RequestParam(value = "size", required = false, defaultValue = "10") int size) {
         return new ResponseEntity<>(userService.getUserNames(page, size), HttpStatus.OK);
     }
 
