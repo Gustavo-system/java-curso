@@ -15,6 +15,7 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
     /**
+     * Con JpaRepository podemos usar este tipo de query methods
      * Se implementa un metodo para filtrar solo por usenname, spring se encarga de hacerlo solo es cosa de definirlo
      * @param username
      * @return
@@ -22,6 +23,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     Optional<User> findByUsername(String username);
 
     /**
+     * Con JpaRepository podemos usar este tipo de query coustoms
      * Esto no es SQL es JPQL
      * Se le agrega Pageable para poder utilizar el paginado
      * @return retorna solo los usernames
@@ -29,6 +31,5 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Query("SELECT u.username FROM User as u")
     //@Query("SELECT u.username FROM User as u WHERE u.username like '%2'")
     public Page<String> getAllUsersOnlyUsernames(Pageable pageable);
-
 
 }

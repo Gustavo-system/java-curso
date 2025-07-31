@@ -2,7 +2,6 @@ package com.cursos.app.services;
 
 import com.cursos.app.entities.User;
 import com.cursos.app.repositories.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
@@ -15,8 +14,12 @@ import java.util.Optional;
 @Service
 public class UserService {
 
-    @Autowired
     private UserRepository userRepository;
+
+    // inyeccion de dependencias por contructor
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     public List<User> getUsers() {
         return userRepository.findAll();
@@ -24,8 +27,9 @@ public class UserService {
 
     public User getUserById(Integer id) {
         Optional<User> result = userRepository.findById(id);
-        if(result.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("El usuario con id $d no encontrado", id));
+        if (result.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,
+                    String.format("El usuario con id $d no encontrado", id));
         }
 
         return result.get();
@@ -33,8 +37,8 @@ public class UserService {
 
     public User getUserByUsername(String username) {
         return userRepository.findByUsername(username).orElseThrow(
-                () -> new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("usuario no encontrado $d", username))
-        );
+                () -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+                        String.format("usuario no encontrado $d", username)));
     }
 
     public Page<User> getUsersPaginator(int page, int size) {
